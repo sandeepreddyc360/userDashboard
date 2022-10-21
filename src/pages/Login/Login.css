@@ -1,0 +1,135 @@
+p{
+    margin: 0;
+    padding: 0;
+}
+
+.loginMainDIv {
+    height: 100vh;
+    width: 100%;
+    background-size: 100% 100%;
+    background-position: center;
+    position: relative;
+    background-color: #003466;
+    overflow: hidden;
+
+
+}
+.loginmetamaskLinkroute{
+    width: 100%;
+    text-decoration: none;
+}
+
+.Loginbgimg {
+    animation: mymove 5s infinite;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    height: 140%;
+    width: 130vw;
+
+}
+
+ /* @keyframes mymove {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-6deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(6deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}  */
+
+
+
+.loginopacityDiv {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+
+    background-color: #003466;
+    opacity: 0.93;
+}
+
+.rectimagesDiv {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+   
+}
+.rectimagesSubDiv{
+    background-image: url('../../assets/recttwoimg.png'), url('../../assets/rectoneimg.png');
+    background-position:20% 12%,80% 89% ;
+    background-size:25vw 15vw ;
+    background-repeat: no-repeat;
+    height: 30vw;
+    width: 60vw;    
+}
+.loginMiddleboxDiv{
+    position: relative;
+    width: 48%;
+    height: 40%;
+    background-color:#00346A;
+    border-radius: 1vw;
+    box-shadow: 1vw 1vw 2vw #001C3A, -1vw -1vw 2vw #0054B1;
+}
+.metamaskbuttonDivlogin{
+    background-color: #6B00D1;
+    width: 80%;
+    height: 3.2vw;
+    border-radius: 0.5vw;
+    margin-top: 4%;
+
+}
+.metamaskbuttonsubDiv{
+    width: 92%;
+    cursor: pointer;
+}
+.loginpageLogintext{
+    font-style: normal;
+font-weight: 600;
+font-size: 2vw;
+margin-top: 4%;
+color: #FFFFFF;
+}
+.loginmetamasktext{
+    font-size: 1.3vw;
+    color: #EAEAEA;
+    font-weight: 400;
+    font-style: normal;
+    cursor: pointer;
+}
+.loginmetamasklogoDiv{
+    height: 2vw;
+}
+
+.questionmarkicon{
+position: absolute;
+right: 4%;
+top: 52%;
+height: 1.2vw;
+}
+.logologin{
+    position: absolute;
+    top: 3vh;
+    right:3.5vw;
+    height: 6vw;
+} 
+.metamasklignkLoginDiv{
+    padding: 0;
+    margin: 0;
+}
+

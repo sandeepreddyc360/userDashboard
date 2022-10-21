@@ -1,0 +1,21 @@
+.circleballsMainDiv{
+    position: relative;
+}
+.circleOne{
+    height: 5vw;
+    width: 4.5vw;
+    margin-right: 5%;
+    background-color:#9E37FF;
+    /* border-radius: 50%; */
+}
+.circleTwo{
+    height: 4vw;
+    width: 4.5vw;
+    background-color:#156CFF;
+    
+    top:60%;
+    left: 20%;
+    position: absolute;
+    
+
+}

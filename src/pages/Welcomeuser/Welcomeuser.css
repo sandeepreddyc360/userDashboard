@@ -1,0 +1,322 @@
+.welcomeUserMainDiv {
+    width: 100%;
+    background: linear-gradient(240.94deg, #000000 -0.67%, #530066 22.8%, #32003E 40.55%, #59006D 59.2%, #311769 68.52%, #003263 79.81%, #00162C 93.55%);
+
+}
+
+.welcomeuserTextDiv {
+
+    width: 90%;
+    height: fit-content;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+
+.welcomeusertopboxesDiv {
+    width: 14%;
+}
+
+.innerboxDiv {
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    font-size: 1.3vw;
+    color: #FFFFFF;
+}
+
+.topBoxone {
+    width: 5vw;
+    height: 5vw;
+    background: linear-gradient(221.7deg, rgba(138, 36, 162, 0.6) 0%, rgba(85, 45, 170, 0.6) 97.86%);
+    box-shadow: 6px 6px 12px rgba(53, 0, 83, 0.4);
+    border-radius: 0.4vw;
+    font-size: 1.5vw;
+
+}
+
+.oneBOxTopDiv {
+    border-bottom: 0.1vw solid white;
+}
+
+.userIconDiv {
+    height: fit-content;
+    width: 12%;
+}
+
+.logoutButton {
+    height: 3vw;
+    width: 3vw;
+}
+
+.welcomeUserText {
+    font-size: 2vw;
+    font-weight: 600;
+    color: white;
+}
+
+.profileImagesMainDiv {
+    position: relative;
+}
+
+.backgroundImgBannerDiv {
+    height: 20vw;
+    width: 64vw;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, rgba(83, 0, 161, 0) 100%);
+    border-radius: 1.5vw;
+    /* border: 0.1vw solid rgba(255, 255, 255, 0.4); */
+    background-repeat: no-repeat !important;
+    background-position:top center !important;
+    cursor: pointer;
+    background-size: 100% 100% !important;
+
+    
+}
+
+.ethrummetamaskMainDiv {
+    width: 70vw;
+    margin-top: 8%;
+}
+
+.ethereumkaMainDiv {
+    width: 100%;
+}
+
+.ethereumLogo {
+    background-color: #8A00AA;
+    height: 3.5vw;
+    width: 3.8vw;
+    border-radius: 0.5vw;
+}
+
+.ethreuemlinkDiv {
+    width: 65%;
+    background-color: #8A00AA;
+    height: 2.7vw;
+    margin-left: 3%;
+    border-radius: 0.5vw;
+}
+
+.ethereumlinksubdiv {
+    width: 70%;
+    height: 100%;
+    margin-right: 4%;
+    font-size: 1.2vw;
+    font-weight: 400;
+    color: #CDCDCD;
+}
+
+.metamaskMainDiv {
+    width: 100%;
+}
+
+.MetamaskTextMainDiv {
+    width: 65%;
+    background-color: #8A00AA;
+    height: 2.7vw;
+    border-radius: 0.5vw;
+    margin-right: 2%;
+}
+
+.metamasktextSubDiv {
+    width: 70%;
+    height: 100%;
+    margin-left: 4%;
+    font-size: 1.2vw;
+    font-weight: 400;
+    color: #CDCDCD;
+}
+
+.metamaskLogoDiv {
+    background-color: #8A00AA;
+    height: 3.5vw;
+    width: 3.8vw;
+    border-radius: 0.5vw;
+}
+
+.logoimages {
+    height: 2vw;
+}
+
+.copy {
+    height: 1.5vw;
+}
+
+.profileImageDiv {
+    height: 13vw;
+    width: 13vw;
+    position: absolute;
+    top: 43%;
+    left: 41%;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: 100% 100% !important;
+    bottom: 13%;
+    color: white;
+    border: 0.5vw solid;
+    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+    cursor: pointer;
+}
+
+.searchdiv {
+    width: 30%;
+    margin-top: 6%;
+    margin-bottom: 4%;
+    margin-left: 2%;
+}
+
+::placeholder {
+    color: #C9C9C9;
+  }
+  
+ 
+
+
+
+.welcomeuserSearchbar {
+    
+    border: none;
+    /* opacity: 0.4; */
+    width: 25vw;
+    height: 3vw;
+    border-radius: 0.6vw;
+    font-size: 1.3VW;
+    background-color: #955da1;
+    color: white;
+
+}
+.welcomeusersearchinput{
+    background-color: #955da1;
+    border: none;
+    margin-left: 5%;
+    height: 100%;
+}
+
+.welcomeusersearchinput:focus {
+    outline: none;
+    color: #FFFFFF;
+    
+}
+
+.settingsDiv {
+    width: 3.5vw;
+    height: 3vw;
+    background-color: #BEBEBE;
+    border: none;
+    /* opacity: 0.4; */
+    background-color: #955da1;
+    border-radius: 0.6vw;
+    position: relative;
+}
+
+.settingsicon {
+    height: 2vw;
+}
+
+.gridborderMainDiv {
+    width: 100%;
+    padding-bottom: 8vw;
+    margin-top: 2%;
+}
+
+.gridBorderDiv {
+    width: 80%;
+    height: 50vw;
+    border: 0.1vw solid #8a9bb9;
+    border-radius: 1vw;
+}
+
+.gridscrollDiv {
+    width: 95%;
+    height: 96%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    word-wrap: break-word;
+}
+
+.gridscrollDiv::-webkit-scrollbar {
+    width: 0.2vw;
+}
+
+.gridscrollDiv::-webkit-scrollbar-track {
+    background-color: #D9D9D9;
+    border-radius: 0.5vw;
+    margin-top: 1vw;
+}
+
+/* Handle */
+.gridscrollDiv::-webkit-scrollbar-thumb {
+    background: #3376E8;
+    border-radius: 10px;
+}
+
+.gridScrollSubDiv {
+    height:100%;
+    width: 100%;
+}
+
+.welcomeusercirclenavDiv {
+    position: fixed;
+    top: 22.5vw;
+    left: 3vw;
+}
+.uploadcoverimagebutton{
+    font-size: 1.8vw;
+    color: #F7F7F7;
+    opacity: 0.4;
+    margin-top: 6%;
+}
+
+
+
+
+/* new grid code */
+
+.gridcardDIv{
+    height: 20vw;
+    width: 14.5vw !important;
+    margin-left: 0.5%;margin-top: 0.5%;
+    margin-top: 1% !important;
+    cursor: pointer;
+    /* margin-top: 0%; */
+    /* padding: 0%; */
+}
+.skurllroseimage{
+    width:13.5vw;
+    height: 100%;
+}
+.gridinfoTextdiv{
+    height: 100%;
+    width:13.5vw;
+    background: linear-gradient(180deg, #0A0028 0%, #000000 100%);
+    border-radius: 0vw 0vw 0.8vw 0.8vw;
+}
+.gridinfosubDiv{
+    width: 90%;
+}
+
+.skullandRosestext{
+    color: #FFFFFF;
+    font-size:1.3vw;
+    padding-top: 1vw;    
+    font-weight: 500;
+}
+
+.skullrosestokentextDiv{
+    font-size: 1.3vw;
+    color:#9E37FF;
+    font-weight: 500;
+    padding-top: 0.5vw;
+}
+.ethereumlogoimg{
+    height: 1.9vw;
+}
+.ethereumDiv{
+    width: 25%;
+    padding-top: 0.5vw;
+}
+.ethereumnumber{
+    font-size: 1.5vw;
+    font-weight: 500;
+    color: #156CFF;
+}

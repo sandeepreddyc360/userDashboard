@@ -1,0 +1,224 @@
+*{
+    padding:0%;
+    margin:0%;
+}
+
+.vestingpoolMainDiv{
+    height: 100vh;
+    width: 100%;
+    background-color:#000000;
+}
+.vestingpoolheadingtextDiv{
+    text-align: center;
+   padding-top: 2vw;
+   padding-bottom: 2vw;
+   width: 90%;
+}
+.vestingpoolbackbutton{
+    background-color: #2D2D2D;
+    height: 2.7vw;
+    width: 2.7vw;
+    border-radius: 50%;
+}
+.vestingpoobackarrow{
+    height: 1vw;
+}
+.vestingpooltextheading{
+    color: #FFFFFF;
+    font-size: 2vw;
+    font-weight: 600;
+}
+.vestingpoolcryptomainDiv{
+    margin-top: 2%;
+    width: 65%;
+    height: fit-content;
+    margin-top: 1%;
+    margin-left: 10%;
+}
+.vestingpoollogoimg{
+    height: 7.2vw;
+    width: 6.3vw;
+}
+.vestingpoolcryptoraptortextInfoDiv{
+    /* background-color: red; */
+    margin-left: 3%;
+    width: 62%;
+}
+.vestingpoolcryptoraptortext{
+    color: #FFFFFF;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+.vestingpoolcrypytoraptorinfo{
+    color: #AEAEAE;
+    font-size: 1.2vw;
+    font-weight: 400;
+    
+}
+.openseaimg{
+    height: 2.2vw;
+}
+.discordimg{
+    height:1.9vw;
+}
+.openseadiscordlogodiv{
+    width: 20%;
+    margin-top: 3%;
+}
+.vestingpoolcirclenavDiv{
+    position: fixed;
+    top:30.5vw;
+    left:3vw;
+}
+.renderingalignDiv{
+    width: 65%;
+    margin-top: 3%;
+}
+.renderingbuttonMainDiv{
+    width: 70%;
+    margin-left: 10%;
+}
+.renderingTextdetail{
+    padding: 0.5vw;
+    font-size: 1.2vw;
+    font-weight: 400;
+    color: #9729FF;
+    cursor: pointer;
+    text-align: center;
+}
+.renderingtextallocation{    
+    padding: 0.5vw;
+    font-size: 1.2vw;
+    font-weight: 400;
+    color: #9729FF;
+    cursor: pointer;
+    text-align: center;
+}
+.renderingtextactive{
+    font-size: 1.2vw;
+    padding: 0.5vw;
+    color: #9729FF;
+    cursor: pointer;
+    font-weight: 400;
+    text-align: center;
+}
+.renderingtextexhastive{
+    padding: 0.5vw;
+    font-size: 1.2vw;
+    color: #9729FF;
+    cursor: pointer;
+    font-weight: 400;
+    text-align: center;
+}
+.renderinginfoMainDiv{
+    height:100%;
+    margin-top: 2%;
+    width:65% ;
+    margin-left: 10%;
+}
+.classdetailstabMaindiv{
+    height: 5vw;
+    width: 60%;
+    border-radius: 1vw;
+}
+.detailstabsubdivOne{
+    width: 100%;
+    background-color: #313131;
+}
+.detailstabsubdivTwo{
+    width: 100%;
+    background-color: #40334B;
+}
+.vestingpooltextspanDiv{
+    height: 2.7vw;
+    width: 30%;
+    text-align: center;
+    font-size: 1.1vw;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+.renderingbuttonMainDiv a{
+    text-decoration: none;
+   
+    font-weight: 400;
+}
+:target {
+   
+    color: white;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    
+    
+  }
+ 
+  .activetabMaindiv{
+    width: 100%;
+    height: 16vw;
+  }
+  .activetextinfotabOne{
+    width: 100%;
+    height: 2vw;
+    background-color: #313131;
+  }
+  .activetextinfotabTwo{
+    width: 100%;
+    height: 2vw;
+    background-color: #40334B;
+  }
+  .activetabtextspanDivOne{
+    /* background-color: yellow; */
+    height: 100%;
+    width: 15%;
+    text-align: center;
+    font-size: 1vw;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #9C9C9C;
+  }
+  .activetabtextspanDivTwo{
+    /* background-color: yellow; */
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 100%;
+    width: 15%;
+    font-size: 1vw;
+    color: #9C9C9C;
+    text-align: center;
+  }
+  .serialnumberheadings{
+    font-size: 1.1vw;
+    font-weight: 600;
+    color: #FFFFFF;
+    width: 10%;
+  }
+  .allocationbuttonsMainDiv{
+    width: 100%;
+    height: 2vw;
+  }
+  .arrowsbuttonDiv{
+    background-color:#0070DD ;
+    height: 2vw;
+    width:2vw;
+    border-radius: 50%;
+  }
+  .allocationbuttonsubdivOne{
+    width: 10%;
+  }
+  .allocationbuttonsubdivTwo{
+    width: 80%;
+  }
+  .arrowbtnimages{
+    height: 1vw;
+  }
+  .claimbutton{
+    background: linear-gradient(96.66deg, #006BD4 0%, #9729FF 89.58%);
+    border: none;
+    width: 50%;
+    border-radius: 0.3vw;
+    color: #FFFFFF;
+    margin-top: 2%;
+    font-size: 0.8vw;
+    height: 1.5vw;
+  }

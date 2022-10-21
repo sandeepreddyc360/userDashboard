@@ -1,0 +1,34 @@
+.navbarmainDIv{
+    -webkit-backdrop-filter: blur(1vw);
+    backdrop-filter: blur(1.5vw);
+    background: rgba(83, 76, 76, 0.1);
+    height: 16vw;
+    width: 6.2vw;
+    border-radius: 1.4vw;
+    position:fixed;
+    left:2.5vw;
+    top: 22vw;
+    border: 0.01vw solid #766d6d;
+}
+
+.NavSubOneDiv{
+    width: 100%;
+    height:7vw;
+    /* background: linear-gradient(140deg,violet 0%,blue 100%); */
+    border: none;
+    
+}
+.NavSubTwoDiv{
+    width: 100%;
+    height:7vw;
+    /* background-color: aliceblue; */
+}
+.navImgOne{
+    height: 3vw;
+    cursor: pointer;
+}
+.navImgTwo{
+    height: 3vw;
+    cursor: pointer;
+    
+}

@@ -1,0 +1,235 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+.userdeatilMaianDIv{
+    width: 100%;
+    background: linear-gradient(314.95deg, #28004F -0.79%, #003466 79.15%);
+}
+.detailsSearchbarMainDiv{
+    width: 90%;
+    height: 2vw;
+    padding-top: 5vw;
+    padding-bottom: 4vw;
+    color: white;
+    font-weight: 600;
+}
+.arrowbtn{
+    height: 4.5vw;
+    cursor: pointer;
+}
+.detailsSearchbar{
+    background-color:#004FA6;
+    border: none;
+    border-radius: 0.4vw 0vw 0vw 0.4vw;
+    height: 2.7vw;
+    width: 21VW;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    font-size: 1.3vw;
+    color:white;
+}
+.detailsSearchbar:focus{
+    outline: none;    
+    background-color:#004FA6;
+
+}
+.searchIconDivdetails{
+    height: 2.7vw;
+    width: 4vw;
+    background-color:#004FA6;
+    border: none;
+    border-radius: 0vw 0.5vw 0.5vw 0vw;
+    cursor: pointer;
+}
+.detailsSearchicon{
+    height: 2vw;
+}
+.deatilsearchsubDiv{
+    width: 34%;
+}
+.deatilsSettingsDiv{
+    height: 2.8vw;
+    width: 3.3vw;
+    background-color:#004FA6;
+    margin-left: 5%;
+    border: none;
+    border-radius: 0.5vw;
+}
+.detailsimageinfoMainDiv{
+    width: 70%;
+    margin-top: 1.5vw;
+}
+.detailskullimg{
+    height: 31vw;
+    filter: drop-shadow(15px 15px 30px #0D1B4E);
+}
+.detailpageinfoDiv{
+    height: 17vw;
+    width: 36vw;
+    background-color:#003E83;
+    border-radius: 0.5vw;
+
+}
+.detailinfoidnum{
+    color: #C78CFF;
+    margin-left: 5%;
+    margin-top: 3%;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+.theNeedlingstext{
+    font-size: 1.8vw;
+    color: #FFFFFF;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-weight: 500;
+}
+.ownerBloodstained{
+    font-size: 1.3vw;
+    margin-left: 5%;
+    margin-top: 2%;
+    font-weight: 400;
+}
+.ownertetx{
+    color: #50A3FF;
+}
+.bloostainedtext{
+    color: #DDDDDD;
+
+}
+.royaltiesdiv{
+    color: #50A3FF;
+    font-size: 1.3vw;
+    margin-left: 5%;
+    margin-top: 1%;
+    font-weight: 400;
+}
+.detailviewsMainDiv{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+.eyenumberDiv{
+
+    width: 16%;
+}
+.eyeicon{
+    height: 1.2vw;
+}
+.viewsnumbertext{
+    font-size: 1.3vw;
+    font-weight: 400;
+    color: #DDDDDD;
+}
+.detailsFavourateDiv{
+    width: 12%;
+
+}
+.ethereumnumsevenSubDiv{
+    width: 30%;
+}
+.ethereumnumsevenDiv{
+    width: 35%;    
+}
+.detailsEthereumLogo{
+    height:2.5vw
+}
+.detailnumseventext{
+font-size: 2.5vw;
+color: #DDDDDD;
+font-weight: 500;
+}
+.amounttext{
+    color: #5189C8;
+    font-size: 1.2vw;
+}
+.descripionDivdetails{
+    width: 60%;
+    
+    position:relative;
+    margin-top: 2vw;
+    padding-bottom: 5vw;
+}
+.descripionSubDivdetails{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.lineborderOneDiv{
+    height: 0.3vw;
+    background-color: #0082FF;
+    width: 12%;
+    border-radius: 4vw 0vw 0vw 0vw;
+}
+.lineborderTwoDiv{
+    height: 0.3vw;
+    background-color: #0082FF;
+    width: 12%;
+    border-radius: 1vw;
+}
+.lineborderThreeDiv{
+    height: 0.3vw;
+    background-color: #0082FF;
+    width: 12%;
+    border-radius: 1vw;
+
+
+}
+.lineborderFourDiv{
+
+    height: 0.3vw;
+    background-color: #0082FF;
+    width: 12%;
+    border-radius: 0vw 4vw 0vw 0vw;
+   
+}
+.detailsdescriptiontextBoxDiv{
+    width: 15%;
+    height: 10vw;
+    font-size: 1.5vw;
+    color: #DCDCDC;
+    cursor: pointer;
+}
+.discriptionTextDisplaydiv{
+    width: 100%;
+    border: 0.3vw solid#0082FF;
+    /* height: 20vw; */
+    /* background-color: #FFFFFF; */
+    margin-top: 5vw;
+    border-top:none ;
+    border-radius: 0vw  0vw  0.8vw  0.8vw;
+}
+.horizontalLine {
+    height:0.5vw !important;
+    width: 90%;
+    background-color:#C78CFF;
+    border: 0.1vw solid #C78CFF;
+    display: none;
+    border-radius: 1vw;
+    margin-top: 1vw;
+}
+.detailsCirclenavDiv{
+    position: fixed;
+    top:22.5vw;
+    left:3vw;
+}
+.detailsSearchbarInput{
+    background-color: #004FA6;
+    border: none;
+    margin-left: 10%;
+}
+.detailsSearchbarInput:focus{
+    border: none;
+    outline: none;
+    color: white;
+}
+.discriptionTextDisplaysubdiv{
+   padding: 2vw;
+}
+.discriptionTextDisplaysubdiv p{
+    font-size: 1.5vw;
+    font-weight: 400;
+    color: #CCCCCC;
+}
+ 
