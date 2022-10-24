@@ -79,7 +79,10 @@ function Userdetail() {
         </div>
       </div>
       <div class='detailsimageinfoMainDiv d-flex justify-content-between align-items-center'>
-        <img class='detailskullimg' src={singleNft?.metadata?.image} alt='not-visible' />
+        <div class='detailskullimg'>
+        <img class='detailskullimgtag'  src={singleNft?.metadata?.image} alt='not-visible' />
+        </div>
+        
         <div class='detailpageinfoDiv d-flex flex-column'>
           <span class='detailinfoidnum'>#{id}</span>
           <span class='theNeedlingstext'>{singleNft?.metadata?.name}</span>

@@ -330,7 +330,9 @@ function Welcomeuser() {
                 Nfts?.map((i) => {
                   return (
                     <div class="gridcardDIv d-flex flex-column align-items-center " key={i.id} onClick={() => navigate(`/token/${parseInt(i.id.tokenId, 16)}`)} >
-                      <img class='skurllroseimage' src={i.metadata.image} alt='not visible' />
+                      <div class='skurllroseimage' >
+                        <img class='nftskullroseimages' src={i.metadata.image} alt='not visible'/>
+                        </div>
                       <div class='gridinfoTextdiv d-flex justify-content-center'>
                         <div class='gridinfosubDiv d-flex flex-column'>
                           <span class='skullandRosestext'>{i.metadata.name}</span>
@@ -346,6 +348,30 @@ function Welcomeuser() {
                 })
               }
             </div>
+            
+
+            {/* <div class='gridScrollSubDiv row'>
+{
+ Nfts?.map((i) => {
+    return (
+      <div class="gridcardDIv d-flex flex-column align-items-center" key={i.id} onClick={() => navigate(`/token/${parseInt(i.id.tokenId, 16)}`)}>
+        <div class='skurllroseimage' style={{background:`url(${i.metadata.image})`}}>
+          </div>
+        <div class='gridinfoTextdiv d-flex justify-content-center'>
+          <div class='gridinfosubDiv d-flex flex-column'>
+            <span class='skullandRosestext'>{i.metadata.name}</span>
+            <span class='skullrosestokentextDiv'>#6669</span>
+            <div class='d-flex justify-content-between align-items-center ethereumDiv'>
+              <img class='ethereumlogoimg' src={ethereumskull} alt='not-visible' />
+              <span class='ethereumnumber'>69</span>
+            </div>
+          </div>
+        </div> 
+      </div>
+    )
+  })
+}
+</div> */}
           </div>
         </div>
       </div>

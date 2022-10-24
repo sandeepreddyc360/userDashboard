@@ -278,16 +278,21 @@
     margin-left: 0.5%;margin-top: 0.5%;
     margin-top: 1% !important;
     cursor: pointer;
-    /* margin-top: 0%; */
-    /* padding: 0%; */
+    border-radius: 1vw;
+    background: linear-gradient(180deg, #0A0028 0%, #000000 100%);  
 }
 .skurllroseimage{
-    width:13.5vw;
-    height: 100%;
+    width:13.4vw;
+    height: 10.5vw;
+    margin-top: 4%;
+    background-position:top center !important;
+    background-size: 100% 100% !important;
+    border-radius: 0.9vw 0.9vw 0vw 0vw;
+    
 }
 .gridinfoTextdiv{
-    height: 100%;
-    width:13.5vw;
+    height:fit-content;
+    width:14.3vw;    
     background: linear-gradient(180deg, #0A0028 0%, #000000 100%);
     border-radius: 0vw 0vw 0.8vw 0.8vw;
 }
@@ -298,7 +303,8 @@
 .skullandRosestext{
     color: #FFFFFF;
     font-size:1.3vw;
-    padding-top: 1vw;    
+    padding-top:0.2vw;   
+    padding-bottom: 0.2vw; 
     font-weight: 500;
 }
 
@@ -307,6 +313,7 @@
     color:#9E37FF;
     font-weight: 500;
     padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
 }
 .ethereumlogoimg{
     height: 1.9vw;
@@ -314,9 +321,17 @@
 .ethereumDiv{
     width: 25%;
     padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
 }
 .ethereumnumber{
     font-size: 1.5vw;
     font-weight: 500;
     color: #156CFF;
+    margin-left: 0.5vw;
+}
+.nftskullroseimages{
+    height: 100%;
+    width: 100%;
+    border-radius: 0.9vw 0.9vw 0vw 0vw;
+
 }
