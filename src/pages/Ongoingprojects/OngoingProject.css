@@ -31,14 +31,23 @@ font-style: 'Poppins';
     
 }
 .boxOneDiv{
-    height: 19vw;
-    width: 38vw;
+    /* 
+   
     background: #2F005C;
 
-    border-radius:0.5vw;
+    
+    
+    border-width: 2px;
+    border-color: red; */
+    height: 19vw;
     box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
-    border: 0.01vw solid ;
-    /* border-image: linear-gradient(to bottom,rgb(160, 155, 155), #2F005C )1; */
+    width: 38vw;
+    background: linear-gradient(#2F005C,#2F005C)padding-box,
+    linear-gradient(to bottom,rgb(160, 155, 155), #2F005C )border-box;
+    border-width:0.1vw;
+    border-radius:0.5vw;
+    border-style: solid;
+    border-color: transparent;
 cursor: pointer;
 
    

@@ -267,6 +267,8 @@ function Welcomeuser() {
             <div class='innerboxDiv oneBOxTopDiv'>
               NFTs
             </div>
+            <div class='innerboxcenterdiv'>              
+            </div>
             <div class='innerboxDiv'>
               56
             </div>

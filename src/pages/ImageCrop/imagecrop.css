@@ -47,4 +47,7 @@ button, input, optgroup, select, textarea{
     z-index: 1040;
 
 }
+.reactEasyCrop_CropArea{
+    border-radius: 50% !important;
+}
 

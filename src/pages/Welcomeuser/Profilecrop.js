@@ -105,8 +105,8 @@ function Profilecrop() {
 
           
             {selectedCar ? <ImageCropDialog setCroppedImageFor={setCroppedImageFor} onCancel={onCancel}  id={selectedCar.id} imageUrl={selectedCar.croppedImageUrl ? selectedCar.croppedImageUrl : selectedCar.imageUrl} cropInit={selectedCar.crop} zoomInit={selectedCar.zoom} aspectInit={selectedCar.aspect} /> : null}
-            <div class='profileImageDiv' onClick={() => setSelectedCar(profileImageObj)} style={{background:`url('${profileImageObj.croppedImageUrl ? profileImageObj.croppedImageUrl : profileImageObj.imageUrl}')`}}>
-         
+            <div class='profileImageDiv' onClick={() => setSelectedCar(profileImageObj)}>
+              <img style={{width:'100%',height:'100%',borderRadius:'50%'}} src={profileImageObj.croppedImageUrl ? profileImageObj.croppedImageUrl : profileImageObj.imageUrl}/>
          </div>
 
             <div style={{ height:'100%','display': 'flex', 'justifyContent': 'center', }} >

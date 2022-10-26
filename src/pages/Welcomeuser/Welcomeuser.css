@@ -1,3 +1,5 @@
+
+
 .welcomeUserMainDiv {
     width: 100%;
     background: linear-gradient(240.94deg, #000000 -0.67%, #530066 22.8%, #32003E 40.55%, #59006D 59.2%, #311769 68.52%, #003263 79.81%, #00162C 93.55%);
@@ -24,6 +26,12 @@
     font-size: 1.3vw;
     color: #FFFFFF;
 }
+.innerboxcenterdiv{
+    background-color: #FFFFFF;
+    height: 0.04vw;
+    width: 90%;
+    opacity: 0.4;
+}
 
 .topBoxone {
     width: 5vw;
@@ -35,9 +43,7 @@
 
 }
 
-.oneBOxTopDiv {
-    border-bottom: 0.1vw solid white;
-}
+
 
 .userIconDiv {
     height: fit-content;
@@ -143,19 +149,27 @@
 }
 
 .profileImageDiv {
-    height: 13vw;
-    width: 13vw;
+    height: 13.5vw;
+    width: 13.5vw;
     position: absolute;
     top: 43%;
-    left: 41%;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
+    left: 40.5%;
     background-size: 100% 100% !important;
     bottom: 13%;
     color: white;
     border: 0.5vw solid;
-    border-image: linear-gradient(to right, darkblue, darkorchid) 1;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+    /* border-image: linear-gradient(to right, darkblue, darkorchid); */
     cursor: pointer;
+
+
+
+    background: linear-gradient(#2F005C,#2F005C)padding-box,
+    linear-gradient(to right,darkblue, darkorchid )border-box;
+    border-width:0.7vw ;
+    border-radius:50%;
+    border-style: solid;
+    border-color: transparent;
 }
 
 .searchdiv {
@@ -284,7 +298,7 @@
 .skurllroseimage{
     width:13.4vw;
     height: 10.5vw;
-    margin-top: 4%;
+    margin-top: 5%;
     background-position:top center !important;
     background-size: 100% 100% !important;
     border-radius: 0.9vw 0.9vw 0vw 0vw;
@@ -332,6 +346,6 @@
 .nftskullroseimages{
     height: 100%;
     width: 100%;
-    border-radius: 0.9vw 0.9vw 0vw 0vw;
+    border-radius: 0.4vw 0.4vw 0vw 0vw;
 
 }

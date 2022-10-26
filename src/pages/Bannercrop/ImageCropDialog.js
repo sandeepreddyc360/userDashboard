@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Cropper from 'react-easy-crop'
 import getCroppedImg from './cropImage';
-import '../../pages/ImageCrop/imagecrop.css'
+import '../Bannercrop/Bannercrop.css'
 import { AppContext } from '../state/appcontext';
 
 
@@ -73,7 +73,10 @@ const ImageCropDialog = ({ id, imageUrl, cropInit, zoomInit,onCancel, aspectInit
 <div class='popupprofilecropMaindiv' onClick={onCancel}>
 </div>
             <div class='popupcrop d-flex flex-column align-items-center justify-content-end'>
-                <Cropper class='profileDialog' height='50' aspect={aspect.value} image={uploadedImage ? uploadedImage : imageUrl} zoom={zoom} crop={crop} onCropChange={onCropChange} onZoomChange={onZoomChange} onCropComplete={onCropComplete} />
+                <div class='profilecrop'>
+                <Cropper class='profileDialog' id='banner'  height='50' aspect={aspect.value} image={uploadedImage ? uploadedImage : imageUrl} zoom={zoom} crop={crop} onCropChange={onCropChange} onZoomChange={onZoomChange} onCropComplete={onCropComplete} />
+                </div>
+                
                 <div class=' cropbuttonsMainDiv d-flex justify-content-around align-items-center'>
                     <input type={'range'} min={1} max={3} step={0.1} value={zoom} onInput={(e) => { onZoomChange(e.target.value) }} className='slider' style={{ 'display': 'none' }} />
                     <select style={{ 'display': 'none' }} onChange={onAspectChange}>{aspectRatios.map((ratio) => <option key={ratio.text} value={ratio.value} selected={ratio.value === aspect.value}>{ratio.text}</option>)}</select>
