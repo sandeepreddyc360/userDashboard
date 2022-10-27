@@ -1,240 +1,266 @@
 *{
-font-style: 'Poppins';
-}
-
-.ongoingProjectsMainDiv{
-    width:100%;
-    height: 100vh;
-    background-color: #2F005C;
-    position: fixed;
-    position: relative;
+    font-style: 'Poppins';
+    }
     
-}
-.ongoingTextDiv{
-    width:100%;
-    padding-top: 4vw;
-    padding-bottom: 2vw;
-    color: #FFFFFF;
-    font-weight: 600;
-    font-size: 2vw;
-}
-
-.boxwelcomeSubDiv{
-    width: 100%;
-}
-.ongoingSubDiv{
-    width: 90%;
-    margin-top: 10%;
-}
-.boxesMainDIv{
-    width: 90%;
+    .ongoingProjectsMainDiv{
+        width:100%;
+        height: 100vh;
+        background-color: #2F005C;
+        position: fixed;
+        position: relative;
+        
+    }
+    .ongoingTextDiv{
+        width:100%;
+        padding-top: 4vw;
+        padding-bottom: 2vw;
+        color: #FFFFFF;
+        font-weight: 600;
+        font-size: 2vw;
+    }
     
-}
-.boxOneDiv{
-    /* 
-   
-    background: #2F005C;
-
+    .boxwelcomeSubDiv{
+        width: 100%;
+    }
+    .ongoingSubDiv{
+        width: 90%;
+        margin-top: 10%;
+    }
+    .boxesMainDIv{
+        width: 90%;
+        
+    }
+    .boxOneDiv{
+        /* 
+       
+        background: #2F005C;
     
-    
-    border-width: 2px;
-    border-color: red; */
-    height: 19vw;
-    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
-    width: 38vw;
-    background: linear-gradient(#2F005C,#2F005C)padding-box,
-    linear-gradient(to bottom,rgb(160, 155, 155), #2F005C )border-box;
-    border-width:0.1vw;
-    border-radius:0.5vw;
-    border-style: solid;
-    border-color: transparent;
-cursor: pointer;
-
-   
-}
-.boxTwoDiv{
-    height: 19vw;
-    width: 38vw;
-    background: #2F005C;
-    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
-    border-radius: 0.5vw;
-}
-.ongoingWelcomeTextDiv{
-    margin-top: 4%;
-    margin-left: 5%;
-    color: white;
-    font-size: 1.3vw;
-}
-.netAssetsMainDIv{
-    margin-right: 5.5%;
-    margin-top: 4%;
-    color: white;
-    font-size: 1.2vw;
-    height: fit-content;
-    width: 41.5%;
-}
-.TexteMainDivOne {
-    width: fit-content;
-    text-align: left;
-}
-.numbersMainDIvOne{
-    width: fit-content;
-    text-align: left;
-}
-.horizontalLineDIv{
-    border: 0.1vw solid #D9D9D9;
-    background-color:#D9D9D9 ;
-    opacity: 0.1;
-    border-radius:1vw ;
-    width: 60%;
-    margin-top: 5%;
-}
-.cryptoRaptorMainDiv{
-    width: 90%;
-    margin-top: 4%;
-}
-
-
-.cryptoRaptoInfoDiv{
-    width: 85%; 
-
-}
-.cryptoRaptorText{
-    color: white;
-    margin-top: 3.5%;
-    font-size: 1.5vw;
-}
-.raptorimg{
-    height: 5.5vw;
-}
-.accountValues{
-    color: white;
-    font-size: 1.2vw;
-    width: 55%;
-    margin-right: 1%;
-}
-.timePeriodMainDiv{
-    width: 90%;
-    height: 2vw;
-    margin-top: 3%;
-}
-.timePeriodText{
-    color: #168CFF;
-    font-size: 1.3vw;
-}
-.navbarOngoingDiv{
-    position: relative;
-}
-.ongoingcirclenavDiv{
-    position: fixed;
-    top:30.5vw;
-    left:3vw;
-}
-.ethereumLogoongoing{
-    height: 1.5vw;
-}
-
-
-/* popupcode */
-
-
-.ongoingpopupmaindiv {
-    opacity: 0.79;
-    background-color: black;
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    height: 100vh;
-    width: 100%;
-
-}
-.ongoingprojectsubcenterDivpopup{
-    height: 100vh;
-    width: 100%;
-    position:fixed;
-    top: 0%;
-    left: 0%;
-
-}
-.popupsubboxDiv {
-    opacity: 1;
-    background-color: #2E2735;
-    height: 33vw;
-    width: 40%;
-    border-radius: 1vw;
-}
-.chooseyournftpopdiv{
-    padding-top:0.7vw ;
-    padding-bottom: 0.7vw;
-    background-color: #2E2735;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 1.3vw;
-    font-weight: 600;
-    width: 100%;
-    border-radius: 1vw 1vw 0vw 0vw;
-}
-.popupudivcellsDiv{
-    background-color:#004D98;
-    height: 2vw;
-    width: 100%;
+        
+        
+        border-width: 2px;
+        border-color: red; */
+        height: 19vw;
+        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+        width: 38vw;
+        background: linear-gradient(#2F005C,#2F005C)padding-box,
+        linear-gradient(to bottom,rgb(160, 155, 155), #2F005C )border-box;
+        border-width:0.1vw;
+        border-radius:0.5vw;
+        border-style: solid;
+        border-color: transparent;
+    cursor: pointer;
     
        
-        
     }
-    .popupudivcellsSubDiv{
-        width: 98%;
+    .boxTwoDiv{
+        height: 19vw;
+        width: 38vw;
+        background: #2F005C;
+        box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+        border-radius: 0.5vw;
     }
-    .popupinfodiv{
-        width: 6vw;
-        text-align: center;
-        height: 100%;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;       
-        font-size: 1vw;
-        color: #FFFFFF;
+    .ongoingWelcomeTextDiv{
+        margin-top: 4%;
+        margin-left: 5%;
+        color: white;
+        font-size: 1.3vw;
     }
-    .popupudivcellsDivTwo{
-        height: 2.1vw;
-        width: 100%;
-        background-color: #2E2735;
+    .netAssetsMainDIv{
+        margin-right: 5.5%;
+        margin-top: 4%;
+        color: white;
+        font-size: 1.2vw;
+        height: fit-content;
+        width: 41.5%;
     }
-    .ongoingcheckbox{
-    height: 1vw ;
-    /* background-color: none !important; */
-        
+    .TexteMainDivOne {
+        width: fit-content;
+        text-align: left;
+    }
+    .numbersMainDIvOne{
+        width: fit-content;
+        text-align: left;
+    }
+    .horizontalLineDIv{
+        border: 0.1vw solid #D9D9D9;
+        background-color:#D9D9D9 ;
+        opacity: 0.1;
+        border-radius:1vw ;
+        width: 60%;
+        margin-top: 5%;
+    }
+    .cryptoRaptorMainDiv{
+        width: 90%;
+        margin-top: 1%;
     }
     
-    .buttonspopupDiv{
-        width: 30%;
-
-        margin-top: 2%;
-        height: fit-content;
-      
+    
+    .cryptoRaptoInfoDiv{
+        width: 85%; 
+    
     }
-    .popupcontinue{
-        height: 3vw;
-        width: 6vw;
-      
-        background-color:#8D27EF ;
-        border-radius: 0.5vw;
-        text-align: center;
+    .cryptoRaptorText{
+        color: white;
+        margin-top: 3.5%;
+        font-size: 1.5vw;
+    }
+    .raptorimg{
+        height: 5.5vw;
+    }
+    .accountValues{
+        color: white;
+        font-size: 1.2vw;
+        width: 55%;
+        margin-right: 1%;
+    }
+    .timePeriodMainDiv{
+        width: 90%;
+        height: 2vw;
+        margin-top: 3%;
+    }
+    .timePeriodText{
+        color: #168CFF;
+        font-size: 1.3vw;
+    }
+    .navbarOngoingDiv{
+        position: relative;
+    }
+    .ongoingcirclenavDiv{
+        position: fixed;
+        top:30.5vw;
+        left:3vw;
+    }
+    .ethereumLogoongoing{
+        height: 1.5vw;
+    }
+    
+    
+    /* popupcode */
+    
+    
+    .ongoingpopupmaindiv {
+        opacity: 0.79;
+        background-color: black;
+        position: fixed;
+        top: 0%;
+        left: 0%;
+        height: 100vh;
+        width: 100%;
+    
+    }
+    .ongoingprojectsubcenterDivpopup{
+        height: 100vh;
+        width: 100%;
+        position:fixed;
+        top: 0%;
+        left: 0%;
+    
+    }
+    .popupsubboxDiv {
+        opacity: 1;
+        background-color: #2E2735;
+        height: 33vw;
+        width: 40%;
+        border-radius: 1vw;
+    }
+    .ongoingpopupscrollDiv{
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+        
+    }
+    .ongoingpopupscrollDiv::-webkit-scrollbar {
+        display: none;
+    }
+    .chooseyournftpopdiv{
+        padding-top:0.7vw ;
+        padding-bottom: 0.7vw;
+        background-color: #2E2735;
         color: #FFFFFF;
-        font-size: 1vw;
+        text-align: center;
+        font-size: 1.3vw;
+        font-weight: 600;
+        width: 100%;
+        border-radius: 1vw 1vw 0vw 0vw;
+    }
+    .popupudivcellsDiv{
+        background-color:#004D98;
+        height: 2vw;
+        width: 100%;  
+        }
+        .popupudivcellsSubDiv{
+            width: 98%;
+        }
+        .popupinfodiv{
+            width: 6vw;
+            text-align: center;
+            height:fit-content;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;       
+            font-size: 1vw;
+            color: #FFFFFF;
+        }
+        .popupudivcellsDivTwo{
+            height: 2.1vw;
+            width: 100%;
+            background-color: #2E2735;
+        }
+        .ongoingcheckbox{
+        height: 1vw ;
+        width: 1VW;
         border: none;
-    }
-    .popupcancel{
-        height: 3vw;
-        width: 6vw;
-        background-color:#000000 ;
-        border-radius: 0.7vw;
-        border:0.1vw solid #8D27EF ;
-        text-align: center;
-        color: #FFFFFF;
-        font-size: 1vw;
-    }
-     
-    .allocationbuttonsubdivTwo{
-        color: #FFFFFF;
-    }
+        /* background-color: none !important; */
+            
+        }
+    
+         input[type=checkbox]:not(:checked){
+            border: none;
+            background-color: black;
+          }
+        
+        .buttonspopupDiv{
+            width: 30%;
+    
+            margin-top: 2%;
+            height: fit-content;
+          
+        }
+        .popupcontinue{
+            height: 3vw;
+            width: 6vw;
+          
+            background-color:#8D27EF ;
+            border-radius: 0.5vw;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 1vw;
+            border: none;
+        }
+        .popupcancel{
+            height: 3vw;
+            width: 6vw;
+            background-color:#000000 ;
+            border-radius: 0.7vw;
+            border:0.1vw solid #8D27EF ;
+            text-align: center;
+            color: #FFFFFF;
+            font-size: 1vw;
+        }
+         
+        .allocationbuttonsubdivTwo{
+            color: #FFFFFF;
+        }
+         
+    
+    
+        .popupudivcellsDiv:nth-child(odd) {
+            
+
+            background: #004D98;
+          }
+          
+          .popupudivcellsDiv:nth-child(even) {
+            background: #2E2735;
+          }
+    

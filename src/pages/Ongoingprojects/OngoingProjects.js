@@ -202,7 +202,7 @@ function OngoingProjects() {
                             <div class='chooseyournftpopdiv'>
                                 <span>Choose Your NFT</span>
                             </div>
-
+                            <div class='ongoingpopupscrollDiv'>
                             {
                                 Nfts?.map((i) =>
 
@@ -229,6 +229,7 @@ function OngoingProjects() {
                                     </div>
                                 )
                             }
+                            </div>
 
 
                         </div>
