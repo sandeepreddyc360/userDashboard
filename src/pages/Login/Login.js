@@ -13,7 +13,7 @@ import { Button, Card } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import axios from "axios"
-import { contractAddress } from "../../config"
+import { contractAddress } from "../../config/smartConfig"
 function Login(props) {
   // metamastStart
   // const history = useHistory();

@@ -8,12 +8,14 @@ import { Routes, Route } from 'react-router-dom'
 import Vestingpool from '../src/pages/vestingpool/vestingpool'
 import axios from "axios";
 import smartContract from './services/smartContract';
+import vestingContract from "./services/vestingContract"
 function App() {
   var walletAddress
-  smartContract.signer.getAddress().then((res) => {
+  vestingContract.signer.getAddress().then((res) => {
     walletAddress = res
-    console.log(res)
+    console.log("res wall", res)
   });
+
 
   return (
     <div>

@@ -1,6 +1,6 @@
 //import Web3 from "web3";
 import { ethers } from "ethers";
-import { ABI, contractAddress } from "../config/smartConfig";
+import { ABI, vestingContractAddress } from "../config/vestingConfig";
 // const web3 = new Web3(Web3.givenProvider);
 // const accounts = web3.eth.getAccounts();
 // const smartContract = new web3.eth.Contract(ABI, ContractAddress);
@@ -14,5 +14,5 @@ provider.send("eth_requestAccounts", []);
 // For this, you need the account signer...
 const signer = provider.getSigner();
 // await signer.getAddress()
-const smartContract = new ethers.Contract(contractAddress, ABI, signer);
-export default smartContract;
+const vestingContract = new ethers.Contract(vestingContractAddress, ABI, signer);
+export default vestingContract;

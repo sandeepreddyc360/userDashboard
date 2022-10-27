@@ -6,7 +6,9 @@ import Circle from '../../components/CirclesNav'
 import ethereumLogo from '../../assets/ethereumongoing.png'
 import { useNavigate } from 'react-router-dom'
 import Carousel from 'carousel-react-rcdev'
-
+import axios from "axios"
+import dayjs from "dayjs"
+import vestingContract from "../../services/vestingContract"
 
 function OngoingProjects() {
 
@@ -42,6 +44,38 @@ function OngoingProjects() {
         last = e.target;
     })
     // end  
+
+
+    const [Nfts, setNfts] = useState()
+
+    const getNFTS = async () => {
+        try {
+            const res = await axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=0x7070770402097Cc5Ed9c5B0b830BdfF2b418F77e`)
+            if (res) {
+                console.log("NFTS", res.data.ownedNfts)
+                setNfts(res.data.ownedNfts)
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    const verify = async () => {
+        // if (!vestingContract.getApproved(5)) {
+        //     let tx = vestingContract.approve('0xF9d3cD93Ebeb9258a4A02d88F826763fd8E951e5', 5);
+        //     let receipt = await tx.wait()
+        //     console.log("recepit",receipt)
+        // } else {
+        //     console.log("ok")
+        // }
+        navigate("/vestingpool")
+    }
+
+    useEffect(() => {
+        getNFTS()
+    }, [])
 
 
 
@@ -159,7 +193,7 @@ function OngoingProjects() {
                 </div>
             </div>
             {/* popup code */}
-            {popup ?
+            {popup &&
 
                 <div>
                     <div class="ongoingpopupmaindiv"></div>
@@ -168,282 +202,44 @@ function OngoingProjects() {
                             <div class='chooseyournftpopdiv'>
                                 <span>Choose Your NFT</span>
                             </div>
-                            <div class='popupudivcellsDiv d-flex justify-content-center'>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDivTwo d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDiv d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDivTwo d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDiv d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDivTwo d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDiv d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDivTwo d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDiv d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDivTwo d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDiv d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDivTwo d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDiv d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='popupudivcellsDivTwo d-flex justify-content-center '>
-                                <div class='popupudivcellsSubDiv d-flex justify-content-between'>
-                                    <div class='popupinfodiv'>
-                                        48
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        81826738
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        30-30-20
-                                    </div>
-                                    <div class='popupinfodiv'>
-                                        Artistic Alpha
-                                    </div>
-                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
-                                    </div>
-                                </div>
-                            </div>
+
+                            {
+                                Nfts?.map((i) =>
+
+                                    <div class='popupudivcellsDiv d-flex justify-content-center'>
+                                        <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
+
+                                            <div class='popupinfodiv'>
+                                                {`${1}/${Nfts.length}`}
+                                            </div>
+                                            <div class='popupinfodiv'>
+                                                {parseInt(i.id.tokenId, 16)}
+                                            </div>
+                                            <div class='popupinfodiv'>
+                                                {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
+                                            </div>
+                                            <div class='popupinfodiv'>
+                                                {i.metadata.name}
+                                            </div>
+                                            <div class='popupinfodiv d-flex align-items-center justify-content-center'>
+                                                <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                )
+                            }
+
 
                         </div>
                         <div class='buttonspopupDiv d-flex justify-content-between'>
                             <button class='popupcancel' onClick={popupcancel}>Cancel</button>
-                            <button class='popupcontinue' style={{ display: cont ? 'block' : 'none' }} onClick={() => navigate("/vestingpool")}>Continue</button>
+                            <button class='popupcontinue' style={{ display: cont ? 'block' : 'none' }} onClick={() => verify()}>Continue</button>
                         </div>
                     </div>
 
                 </div>
-                : null}
+            }
         </div>
     )
 }
