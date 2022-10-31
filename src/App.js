@@ -9,6 +9,7 @@ import Vestingpool from '../src/pages/vestingpool/vestingpool'
 import axios from "axios";
 import smartContract from './services/smartContract';
 import vestingContract from "./services/vestingContract"
+import detailsTab from './pages/vestingpool/detailsTab';
 function App() {
   var walletAddress
   vestingContract.signer.getAddress().then((res) => {
@@ -26,6 +27,8 @@ function App() {
           <Route path='/ongoingproject' element={<Ongoing />}></Route>
           <Route path='/token/:id' element={<Userdetail />}></Route>
           <Route path='/vestingpool' element={<Vestingpool />}></Route>
+
+          <Route path="/details" element={<detailsTab/>}></Route>
         </Routes>
       </BrowserRouter>
 

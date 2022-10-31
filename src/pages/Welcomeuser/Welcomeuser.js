@@ -20,7 +20,7 @@ import axios from 'axios'
 
 
 
-function Welcomeuser() {
+function Welcomeuser({ walletAddress }) {
 
   const navigate = useNavigate();
   const [Nfts, setNfts] = useState()
@@ -73,7 +73,7 @@ function Welcomeuser() {
 
   }
   const getNFTS = async () => {
-    axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=0x7070770402097Cc5Ed9c5B0b830BdfF2b418F77e`)
+    axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=0x781d20e49BdE880a2EE7efbeF2F39fACA0Cb811C`)
       .then(res => {
         // history.push('/componentURL')
         // accountChangeHandler(window.location.href = "welcomeuser");
@@ -106,7 +106,7 @@ function Welcomeuser() {
             <div class='innerboxDiv oneBOxTopDiv'>
               NFTs
             </div>
-            <div class='innerboxcenterdiv'>              
+            <div class='innerboxcenterdiv'>
             </div>
             <div class='innerboxDiv'>
               56
@@ -172,8 +172,8 @@ function Welcomeuser() {
                   return (
                     <div class="gridcardDIv d-flex flex-column align-items-center " key={i.id} onClick={() => navigate(`/token/${parseInt(i.id.tokenId, 16)}`)} >
                       <div class='skurllroseimage' >
-                        <img class='nftskullroseimages' src={i.metadata.image} alt='not visible'/>
-                        </div>
+                        <img class='nftskullroseimages' src={i.metadata.image} alt='not visible' />
+                      </div>
                       <div class='gridinfoTextdiv d-flex justify-content-center'>
                         <div class='gridinfosubDiv d-flex flex-column'>
                           <span class='skullandRosestext'>{i.metadata.name}</span>
@@ -189,7 +189,7 @@ function Welcomeuser() {
                 })
               }
             </div>
-            
+
 
             {/* <div class='gridScrollSubDiv row'>
 {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../pages/vestingpool/vestingpool.css'
 import vestingpoobackarrow from '../../assets/vestingpoobackarrow.png'
 import vestingpoollogoimg from '../../assets/cryptoraptorImg.png'
@@ -11,17 +11,25 @@ import { useNavigate } from 'react-router-dom'
 import preline from '../../assets/singlerightarrowBtn.png'
 import singleleftarrow from '../../assets/singleleftarrow.png'
 import nextarrow from '../../assets/nextarrowbtn.png'
+import vestingContract from '../../services/vestingContract'
+import { vestingContractAddress } from '../../config/vestingConfig'
+import { contractAddress } from '../../config/smartConfig'
+import smartContract from '../../services/smartContract'
 
-
+import DetailsTab from "./detailsTab"
+import AllocationTab from './allocationTab'
+import ActiveTab from './activeTab'
+import ExhaustedTab from "./exhaustedTab"
 
 const Vestingpool = () => {
 
     const navigate = useNavigate();
 
 
-
+const [vestedNftsData,setVestedNftsData]=useState()
 
     const [details, setDetails] = useState(true)
+    const [allocation, setAllocation] = useState(false)
 
     const detailshandler = () => {
         setDetails(true)
@@ -31,7 +39,6 @@ const Vestingpool = () => {
     }
 
 
-    const [allocation, setAllocation] = useState(false)
 
     const allocationhandler = () => {
         setDetails(false)
@@ -61,8 +68,22 @@ const Vestingpool = () => {
 
     }
 
+    const listOfNfts = () => {
+
+        vestingContract.listOfNFTs('0x781d20e49BdE880a2EE7efbeF2F39fACA0Cb811C').then((res) => {
+
+            console.log("list", res)
+            setVestedNftsData(res)
+        })
 
 
+    }
+
+
+
+    useEffect(() => {
+        listOfNfts()
+    }, [])
 
 
 
@@ -114,483 +135,14 @@ const Vestingpool = () => {
 
             </div>
             <div class='renderinginfoMainDiv d-flex justify-content-start '>
-                {details ?
-                    <div class='classdetailstabMaindiv'>
-                        <div class='detailstabsubdivOne d-flex justify-content-between'>
-                            <div class='vestingpooltextspanDiv'>
-                                <span>Opened</span>
-                            </div>
-                            <div class='vestingpooltextspanDiv'>
-                                <span>14-09-2022</span>
-                            </div>
-                        </div>
-                        <div class='detailstabsubdivTwo d-flex justify-content-between align-items-center'>
-                            <div class='vestingpooltextspanDiv'>
-                                <span>Opened</span>
-                            </div>
-                            <div class='vestingpooltextspanDiv'>
-                                <span>14-09-2022</span>
-                            </div>
-                        </div>
-                        <div class='detailstabsubdivOne d-flex justify-content-between'>
-                            <div class='vestingpooltextspanDiv'>
-                                <span>Opened</span>
-                            </div>
-                            <div class='vestingpooltextspanDiv'>
-                                <span>14-09-2022</span>
-                            </div>
-                        </div>
-                    </div> : null}
-                {allocation ?
-                    <div class='activetabMaindiv d-flex flex-column justify-content-center'>
-                        <div class='allocationbuttonsMainDiv d-flex justify-content-between '>
-                            <div class='allocationbuttonsubdivOne d-flex justify-content-between'>
-                                <div class='arrowsbuttonDiv d-flex justify-content-center align-items-center'>
-                                    <img class='arrowbtnimages' src={prevrow} alt='notvisible' />
-                                </div>
-                                <div class='arrowsbuttonDiv d-flex justify-content-center align-items-center'>
-                                    <img class='arrowbtnimages' src={preline} alt='notvisible' />
-                                </div>
-                            </div>
-                            <div class='allocationbuttonsubdivTwo d-flex justify-content-around'>
-                                
-                                {/* allocation part */}
-                            </div>
-                            <div class='allocationbuttonsubdivOne d-flex justify-content-between'>
-                                <div class='arrowsbuttonDiv d-flex justify-content-center align-items-center'>
-                                    <img class='arrowbtnimages' src={singleleftarrow} alt='notvisible' />
-                                </div>
-                                <div class='arrowsbuttonDiv d-flex justify-content-center align-items-center'>
-                                    <img class='arrowbtnimages' src={nextarrow} alt='notvisible' />
-                                </div>
-                            </div>
-                        </div>
-                        <div class='activetabMaindiv mt-2'>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span class='serialnumberheadings'>Serial No..</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'>Date</span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span class='serialnumberheadings'>Allocation</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'>Claimed Status</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'>Action</span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton'>Claim</button>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton'>Claim</button>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton'>Claim</button>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton'>Claim</button>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton'>Claim</button>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton'>Claim</button>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton'>Claim</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div> : null
-                }
-                {
-                    active ?
-                        <div class='activetabMaindiv'>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span class='serialnumberheadings '>  NFT ID</span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span class='serialnumberheadings '> Date</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'> Lorem Ipsum</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'> Lorem Ipsum</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'> Lorem Ipsum</span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                            </div>
-                        </div> : null
-                }
-                {
-                    exhaust ?
-                        <div class='activetabMaindiv'>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span class='serialnumberheadings'>Serial No.</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'>Name</span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span class='serialnumberheadings'>Lorem Ipsum</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'> Lorem Ipsum</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span class='serialnumberheadings'> Lorem Ipsum</span>
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    {/* <span>Lorem Ipsum </span> */}
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    {/* <span>Lorem Ipsum </span> */}
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    {/* <span>Lorem Ipsum </span> */}
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    {/* <span>Lorem Ipsum </span> */}
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    {/* <span>Lorem Ipsum </span> */}
-                                </div>
-                            </div>
-                            <div class='activetextinfotabOne d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    {/* <span>Lorem Ipsum </span> */}
-                                </div>
-                            </div>
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>5486</span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>Lorem Ipsum </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    {/* <span>Lorem Ipsum </span> */}
-                                </div>
-                            </div>
-                        </div> : null
-                }
+                {details && <DetailsTab data={vestedNftsData} />}
+                {allocation && <AllocationTab />}
+                {active && <ActiveTab />}
+                {exhaust && <ExhaustedTab data={vestedNftsData} />}
 
             </div>
         </div>
+
     )
 }
 

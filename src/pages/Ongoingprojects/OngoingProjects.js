@@ -8,11 +8,13 @@ import { useNavigate } from 'react-router-dom'
 import Carousel from 'carousel-react-rcdev'
 import axios from "axios"
 import dayjs from "dayjs"
-import vestingContract from "../../services/vestingContract"
-
+import smartContract from "../../services/smartContract"
+import { vestingContractAddress } from "../../config/vestingConfig"
+import vestingContract from '../../services/vestingContract'
 function OngoingProjects() {
 
     const [popup, setPopup] = useState(false)
+    const [selectedTokenID, setSelectedTokenID] = useState()
 
     const popuphandler = () => {
         setPopup(true)
@@ -50,10 +52,11 @@ function OngoingProjects() {
 
     const getNFTS = async () => {
         try {
-            const res = await axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=0x7070770402097Cc5Ed9c5B0b830BdfF2b418F77e`)
+            const res = await axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=0x781d20e49BdE880a2EE7efbeF2F39fACA0Cb811C`)
             if (res) {
                 console.log("NFTS", res.data.ownedNfts)
                 setNfts(res.data.ownedNfts)
+                console.log(res.data.ownedNfts.id.tokenId)
             }
         }
         catch (error) {
@@ -63,14 +66,37 @@ function OngoingProjects() {
 
 
     const verify = async () => {
-        // if (!vestingContract.getApproved(5)) {
-        //     let tx = vestingContract.approve('0xF9d3cD93Ebeb9258a4A02d88F826763fd8E951e5', 5);
-        //     let receipt = await tx.wait()
-        //     console.log("recepit",receipt)
-        // } else {
-        //     console.log("ok")
-        // }
-        navigate("/vestingpool")
+        try {
+            let res = await smartContract.getApproved(selectedTokenID)
+            console.log("res", res)
+            if (parseInt(res, 16) === 0) {
+                let tx = await smartContract.approve(vestingContractAddress, selectedTokenID);
+                let receipt = await tx.wait()
+                console.log("recepit", receipt)
+
+
+            } else {
+
+
+                alert("Already approved")
+                vestingContract.Vesting_XVT('1').then((response) => {
+                    console.log("vesting res", response)
+                })
+
+                navigate("/vestingpool")
+            }
+
+
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+
+
+
+
+        // navigate("/vestingpool")
     }
 
     useEffect(() => {
@@ -206,7 +232,7 @@ function OngoingProjects() {
                             {
                                 Nfts?.map((i) =>
 
-                                    <div class='popupudivcellsDiv d-flex justify-content-center'>
+                                    <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
                                         <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
 
                                             <div class='popupinfodiv'>
@@ -222,7 +248,7 @@ function OngoingProjects() {
                                                 {i.metadata.name}
                                             </div>
                                             <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                                <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" />
+                                                <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
                                             </div>
 
                                         </div>
