@@ -75,17 +75,22 @@ function OngoingProjects() {
                 let tx = await smartContract.approve(vestingContractAddress, selectedTokenID);
                 let receipt = await tx.wait()
                 console.log("recepit", receipt)
+                if (receipt) {
+                    vestingContract.Vesting_XVT(selectedTokenID).then((response) => {
+                        console.log("vesting res", response)
+                        if (response) {
 
+                            navigate("/vestingpool")
+                        }
+                    })
+                }
 
             } else {
                 alert("Already approved")
-                vestingContract.Vesting_XVT('1').then((response) => {
-                    console.log("vesting res", response)
-                })
 
 
 
-                navigate("/vestingpool")
+
             }
 
 

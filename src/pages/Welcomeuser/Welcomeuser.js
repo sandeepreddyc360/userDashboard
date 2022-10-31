@@ -24,8 +24,8 @@ function Welcomeuser() {
 
   const navigate = useNavigate();
   const [Nfts, setNfts] = useState()
-const walletAddress=sessionStorage.getItem("WalletAddress")
-
+  const WalletAddress = sessionStorage.getItem("WalletAddress")
+console.log("wallter add",WalletAddress)
   async function handleMetamask() {
     let isReturningUser
     let ReturningUser
@@ -72,8 +72,8 @@ const walletAddress=sessionStorage.getItem("WalletAddress")
     // solution Two End
 
   }
-  const getNFTS = async () => {
-    axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=${walletAddress}`)
+  const getNFTS = () => {
+    axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=${WalletAddress}`)
       .then(res => {
         // history.push('/componentURL')
         // accountChangeHandler(window.location.href = "welcomeuser");

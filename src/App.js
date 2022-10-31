@@ -14,7 +14,7 @@ function App() {
   var walletAddress
   vestingContract.signer.getAddress().then((res) => {
     walletAddress = res
-    sessionStorage.setItem("Wallet Address",res)
+    sessionStorage.setItem("WalletAddress",res)
     console.log("res wall", res)
   });
 
