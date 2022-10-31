@@ -16,6 +16,9 @@ function OngoingProjects() {
     const [popup, setPopup] = useState(false)
     const [selectedTokenID, setSelectedTokenID] = useState()
 
+    const walletAddress = sessionStorage.getItem("WalletAddress")
+
+
     const popuphandler = () => {
         setPopup(true)
         setCont(false)
@@ -52,11 +55,10 @@ function OngoingProjects() {
 
     const getNFTS = async () => {
         try {
-            const res = await axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=0x781d20e49BdE880a2EE7efbeF2F39fACA0Cb811C`)
+            const res = await axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=${walletAddress}`)
             if (res) {
                 console.log("NFTS", res.data.ownedNfts)
                 setNfts(res.data.ownedNfts)
-                console.log(res.data.ownedNfts.id.tokenId)
             }
         }
         catch (error) {
@@ -76,12 +78,12 @@ function OngoingProjects() {
 
 
             } else {
-
-
                 alert("Already approved")
                 vestingContract.Vesting_XVT('1').then((response) => {
                     console.log("vesting res", response)
                 })
+
+
 
                 navigate("/vestingpool")
             }
@@ -229,32 +231,32 @@ function OngoingProjects() {
                                 <span>Choose Your NFT</span>
                             </div>
                             <div class='ongoingpopupscrollDiv'>
-                            {
-                                Nfts?.map((i) =>
+                                {
+                                    Nfts?.map((i) =>
 
-                                    <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
-                                        <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
+                                        <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
+                                            <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
 
-                                            <div class='popupinfodiv'>
-                                                {`${1}/${Nfts.length}`}
-                                            </div>
-                                            <div class='popupinfodiv'>
-                                                {parseInt(i.id.tokenId, 16)}
-                                            </div>
-                                            <div class='popupinfodiv'>
-                                                {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
-                                            </div>
-                                            <div class='popupinfodiv'>
-                                                {i.metadata.name}
-                                            </div>
-                                            <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                                <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
-                                            </div>
+                                                <div class='popupinfodiv'>
+                                                    {`${1}/${Nfts.length}`}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {parseInt(i.id.tokenId, 16)}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {i.metadata.name}
+                                                </div>
+                                                <div class='popupinfodiv d-flex align-items-center justify-content-center'>
+                                                    <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
+                                                </div>
 
+                                            </div>
                                         </div>
-                                    </div>
-                                )
-                            }
+                                    )
+                                }
                             </div>
 
 

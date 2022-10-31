@@ -14,6 +14,7 @@ function App() {
   var walletAddress
   vestingContract.signer.getAddress().then((res) => {
     walletAddress = res
+    sessionStorage.setItem("Wallet Address",res)
     console.log("res wall", res)
   });
 
@@ -22,13 +23,13 @@ function App() {
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Login walletAddress={walletAddress} />}></Route>
+          <Route path='/' element={<Login />}></Route>
           <Route path='/welcomeuser' element={<Welcomeuser />}></Route>
           <Route path='/ongoingproject' element={<Ongoing />}></Route>
           <Route path='/token/:id' element={<Userdetail />}></Route>
           <Route path='/vestingpool' element={<Vestingpool />}></Route>
 
-          <Route path="/details" element={<detailsTab/>}></Route>
+          <Route path="/details" element={<detailsTab />}></Route>
         </Routes>
       </BrowserRouter>
 
