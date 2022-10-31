@@ -20,7 +20,7 @@ import axios from 'axios'
 
 
 
-function Welcomeuser({ walletAddress }) {
+function Welcomeuser() {
 
   const navigate = useNavigate();
   const [Nfts, setNfts] = useState()
