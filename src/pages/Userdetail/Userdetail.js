@@ -80,9 +80,9 @@ function Userdetail() {
       </div>
       <div class='detailsimageinfoMainDiv d-flex justify-content-between align-items-center'>
         <div class='detailskullimg'>
-        <img class='detailskullimgtag'  src={singleNft?.metadata?.image} alt='not-visible' />
+          <img class='detailskullimgtag' src={singleNft?.metadata?.image} alt='not-visible' />
         </div>
-        
+
         <div class='detailpageinfoDiv d-flex flex-column'>
           <span class='detailinfoidnum'>#{id}</span>
           <span class='theNeedlingstext'>{singleNft?.metadata?.name}</span>
@@ -90,24 +90,7 @@ function Userdetail() {
             <span class='ownertetx'> Owner -</span>
             <span class='bloostainedtext'> --</span>
           </div>
-          <span class='royaltiesdiv'>Royalties -</span>
-          <div class='detailviewsMainDiv d-flex justify-content-between'>
-            <div class='eyenumberDiv d-flex justify-content-between align-items-center'>
-              <img class='eyeicon' src={eye} alt='not viewed' />
-              <span class='viewsnumbertext'> --</span>
-            </div>
-            <div class='detailsFavourateDiv d-flex justify-content-between align-items-center'>
-              <img class='eyeicon' src={favicon} alt='not visible' />
-              <span class='viewsnumbertext'> --</span>
-            </div>
-            <div class='ethereumnumsevenDiv d-flex justify-content-between align-items-center'>
-              <div class='d-flex ethereumnumsevenSubDiv justify-content-between align-items-center'>
-                <img class='detailsEthereumLogo' src={ethereum} alt='not viewed' />
-                <span class='detailnumseventext'>-</span>
-              </div>
-              <span class='amounttext'>($7,903.70)</span>
-            </div>
-          </div>
+
         </div>
       </div>
       <div class='descripionDivdetails'>

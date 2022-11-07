@@ -76,20 +76,20 @@ function OngoingProjects() {
                 let receipt = await tx.wait()
                 console.log("recepit", receipt)
                 if (receipt) {
-                    vestingContract.Vesting_XVT(selectedTokenID).then((response) => {
+                    vestingContract.vesting(selectedTokenID).then((response) => {
                         console.log("vesting res", response)
                         if (response) {
 
                             navigate("/vestingpool")
                         }
+                    }).catch(e => {
+                        console.log("vesting error", e)
                     })
                 }
 
             } else {
                 alert("Already approved")
-
-
-
+                navigate("/vestingpool")
 
             }
 
@@ -99,12 +99,8 @@ function OngoingProjects() {
             console.log(e)
         }
 
-
-
-
-
-        // navigate("/vestingpool")
     }
+
 
     useEffect(() => {
         getNFTS()
@@ -127,19 +123,19 @@ function OngoingProjects() {
                     <Navbar />
                 </div>
                 <div class='boxesMainDIv d-flex justify-content-between'>
-                    <div class='boxOneDiv d-flex flex-column align-items-center' onClick={popuphandler}>
+                    <div class='boxOneDiv d-flex flex-column align-items-center' style={{ cursor: 'pointer' }} onClick={popuphandler}>
                         <div class='boxwelcomeSubDiv d-flex justify-content-between'>
                             <div class='ongoingWelcomeTextDiv' >
                                 Welcome, User
                             </div>
                             <div class='netAssetsMainDIv d-flex justify-content-between'>
                                 <div class='TexteMainDivOne d-flex flex-column'>
-                                    <span style={{ 'cursor': 'pointer' }}>Unlocked Tokens</span>
+                                    <span >Unlocked Tokens</span>
                                     <span v>Next Unlock</span>
                                 </div>
                                 <div class='numbersMainDIvOne d-flex flex-column'>
-                                    <span style={{ 'cursor': 'pointer' }}>-  995</span>
-                                    <span style={{ 'cursor': 'pointer' }}>-  Lorem</span>
+                                    <span >-  995</span>
+                                    <span >-  Lorem</span>
                                 </div>
                             </div>
                         </div>
@@ -155,13 +151,13 @@ function OngoingProjects() {
                                     <span class='cryptoRaptorText'>Crypto Raptors</span>
                                     <div class='accountValues d-flex justify-content-between '>
                                         <div class='d-flex flex-column'>
-                                            <span style={{ 'cursor': 'pointer' }}>Net Account Value</span>
-                                            <span style={{ 'cursor': 'pointer' }}>Remaining</span>
-                                            <span style={{ 'cursor': 'pointer' }}>Genesis price</span>
+                                            <span >Net Account Value</span>
+                                            <span >Remaining</span>
+                                            <span >Genesis price</span>
                                         </div>
                                         <div class='d-flex flex-column'>
-                                            <span style={{ 'cursor': 'pointer' }}>- Lorem</span>
-                                            <span style={{ 'cursor': 'pointer' }}>- 584</span>
+                                            <span >- Lorem</span>
+                                            <span >- 584</span>
                                             <div class='d-flex justify-content-between align-items-center'>
                                                 <span>- 54 </span>
                                                 <img class='ethereumLogoongoing' src={ethereumLogo} alt='not visible' />
@@ -172,22 +168,22 @@ function OngoingProjects() {
                             </div>
                         </div>
                         <div class='timePeriodMainDiv d-flex justify-content-start'>
-                            <span class='timePeriodText' style={{ 'cursor': 'pointer' }}>Time Period - 12 months</span>
+                            <span class='timePeriodText' >Time Period - 12 months</span>
                         </div>
                     </div>
-                    <div class='boxOneDiv d-flex flex-column align-items-center' onClick={popuphandler}>
+                    <div class='boxOneDiv d-flex flex-column align-items-center' style={{ cursor: "not-allowed" }} onClick={popuphandler}>
                         <div class='boxwelcomeSubDiv d-flex justify-content-between'>
-                            <div class='ongoingWelcomeTextDiv' style={{ 'cursor': 'pointer' }}>
+                            <div class='ongoingWelcomeTextDiv' >
                                 Welcome, User
                             </div>
                             <div class='netAssetsMainDIv d-flex justify-content-between'>
                                 <div class='TexteMainDivOne d-flex flex-column'>
-                                    <span style={{ 'cursor': 'pointer' }}>Net Assets</span>
-                                    <span style={{ 'cursor': 'pointer' }}>Next Unlock</span>
+                                    <span >Net Assets</span>
+                                    <span >Next Unlock</span>
                                 </div>
                                 <div class='numbersMainDIvOne d-flex flex-column'>
-                                    <span style={{ 'cursor': 'pointer' }}>-  995</span>
-                                    <span style={{ 'cursor': 'pointer' }}>-  Lorem</span>
+                                    <span >-  995</span>
+                                    <span >-  Lorem</span>
                                 </div>
                             </div>
                         </div>
@@ -203,15 +199,15 @@ function OngoingProjects() {
                                     <span class='cryptoRaptorText'>Crypto Raptors</span>
                                     <div class='accountValues d-flex justify-content-between'>
                                         <div class='d-flex flex-column'>
-                                            <span style={{ 'cursor': 'pointer' }}>Net Account Value</span>
-                                            <span style={{ 'cursor': 'pointer' }}>Remaining</span>
-                                            <span style={{ 'cursor': 'pointer' }}>Genesis price</span>
+                                            <span >Net Account Value</span>
+                                            <span >Remaining</span>
+                                            <span >Genesis price</span>
                                         </div>
                                         <div class='d-flex flex-column'>
-                                            <span style={{ 'cursor': 'pointer' }}>- Lorem</span>
-                                            <span style={{ 'cursor': 'pointer' }}>- 584</span>
+                                            <span >- Lorem</span>
+                                            <span >- 584</span>
                                             <div class='d-flex justify-content-between align-items-center'>
-                                                <span style={{ 'cursor': 'pointer' }}>- 54 </span>
+                                                <span >- 54 </span>
                                                 <img class='ethereumLogoongoing' src={ethereumLogo} alt='not visible' />
                                             </div>
                                         </div>
@@ -237,13 +233,13 @@ function OngoingProjects() {
                             </div>
                             <div class='ongoingpopupscrollDiv'>
                                 {
-                                    Nfts?.map((i) =>
+                                    Nfts?.map((i,index) =>
 
                                         <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
                                             <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
 
                                                 <div class='popupinfodiv'>
-                                                    {`${1}/${Nfts.length}`}
+                                                    {`${index+1}/${Nfts.length}`}
                                                 </div>
                                                 <div class='popupinfodiv'>
                                                     {parseInt(i.id.tokenId, 16)}

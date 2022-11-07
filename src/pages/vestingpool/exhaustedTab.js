@@ -1,8 +1,7 @@
 import React from 'react'
 
-function exhaustedTab({ data }) {
-    console.log(data)
-
+function exhaustedTab({ vestedNftsData }) {
+ 
     return (
         <div class='activetabMaindiv'>
             <div class='activetextinfotabOne d-flex justify-content-between'>
@@ -18,99 +17,36 @@ function exhaustedTab({ data }) {
                 <div class='activetabtextspanDivTwo'>
                     <span class='serialnumberheadings'>Name</span>
                 </div>
-                
+
             </div>
-            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                <div class='activetabtextspanDivOne'>
-                    <span>5486</span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivOne'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                
-            </div>
-            <div class='activetextinfotabOne d-flex justify-content-between'>
-                <div class='activetabtextspanDivOne'>
-                    <span>5486</span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivOne'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                
-            </div>
-            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                <div class='activetabtextspanDivOne'>
-                    <span>5486</span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivOne'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                
-            </div>
-            <div class='activetextinfotabOne d-flex justify-content-between'>
-                <div class='activetabtextspanDivOne'>
-                    <span>5486</span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivOne'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                
-            </div>
-            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                <div class='activetabtextspanDivOne'>
-                    <span>5486</span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivOne'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                
-            </div>
-            <div class='activetextinfotabOne d-flex justify-content-between'>
-                <div class='activetabtextspanDivOne'>
-                    <span>5486</span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivOne'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span>Lorem Ipsum </span>
-                </div>
-                
-            </div>
-            
+
+
+            {
+                vestedNftsData.map((i, index) => (
+                    i.vestingCompleted !== false &&
+                    <>
+                        <div class='activetextinfotabTwo d-flex justify-content-between'>
+                            <div class='activetabtextspanDivOne'>
+                                <span>5486</span>
+                            </div>
+                            <div class='activetabtextspanDivTwo'>
+                                <span>Lorem Ipsum </span>
+                            </div>
+                            <div class='activetabtextspanDivOne'>
+                                <span>Lorem Ipsum </span>
+                            </div>
+                            <div class='activetabtextspanDivTwo'>
+                                <span>Lorem Ipsum </span>
+                            </div>
+
+                        </div>
+                    </>
+                    
+                )
+                )
+            }
+
+
         </div>
     )
 }

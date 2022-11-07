@@ -25,7 +25,7 @@ function Welcomeuser() {
   const navigate = useNavigate();
   const [Nfts, setNfts] = useState()
   const WalletAddress = sessionStorage.getItem("WalletAddress")
-console.log("wallter add",WalletAddress)
+  console.log("wallter add", WalletAddress)
   async function handleMetamask() {
     let isReturningUser
     let ReturningUser
@@ -109,7 +109,7 @@ console.log("wallter add",WalletAddress)
             <div class='innerboxcenterdiv'>
             </div>
             <div class='innerboxDiv'>
-              56
+              {Nfts?.length}
             </div>
           </div>
         </div>

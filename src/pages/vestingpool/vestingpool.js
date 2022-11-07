@@ -25,8 +25,8 @@ const Vestingpool = () => {
 
     const navigate = useNavigate();
 
-
-const [vestedNftsData,setVestedNftsData]=useState()
+    const WalletAddress = sessionStorage.getItem("WalletAddress")
+    const [vestedNftsData, setVestedNftsData] = useState()
 
     const [details, setDetails] = useState(true)
     const [allocation, setAllocation] = useState(false)
@@ -55,7 +55,6 @@ const [vestedNftsData,setVestedNftsData]=useState()
         setAllocation(false)
         setExhaust(false)
         setActive(true)
-
     }
 
     const [exhaust, setExhaust] = useState(false)
@@ -65,21 +64,16 @@ const [vestedNftsData,setVestedNftsData]=useState()
         setAllocation(false)
         setActive(false)
         setExhaust(true)
-
     }
 
     const listOfNfts = () => {
 
-        vestingContract.listOfNFTs('0x781d20e49BdE880a2EE7efbeF2F39fACA0Cb811C').then((res) => {
+        vestingContract.listOfNFTs(WalletAddress).then((res) => {
 
             console.log("list", res)
             setVestedNftsData(res)
         })
-
-
     }
-
-
 
     useEffect(() => {
         listOfNfts()
@@ -106,9 +100,7 @@ const [vestedNftsData,setVestedNftsData]=useState()
                 <img class='vestingpoollogoimg' src={vestingpoollogoimg} alt='not-visible' />
                 <div class='vestingpoolcryptoraptortextInfoDiv d-flex flex-column'>
                     <span class='vestingpoolcryptoraptortext'>Crypto Raptors</span>
-                    <span class='vestingpoolcrypytoraptorinfo'>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua.
+                    <span class='vestingpoolcrypytoraptorinfo'>NOTA is the first NFT from Notafi Ecosystem
                     </span>
                     <div class='d-flex justify-content-between align-items-center openseadiscordlogodiv'>
                         <img class='openseaimg' src={opensea} alt='not-visible' />
@@ -135,10 +127,10 @@ const [vestedNftsData,setVestedNftsData]=useState()
 
             </div>
             <div class='renderinginfoMainDiv d-flex justify-content-start '>
-                {details && <DetailsTab data={vestedNftsData} />}
-                {allocation && <AllocationTab />}
-                {active && <ActiveTab />}
-                {exhaust && <ExhaustedTab data={vestedNftsData} />}
+                {details && <DetailsTab vestedNftsData={vestedNftsData} />}
+                {allocation && <AllocationTab vestedNftsData={vestedNftsData} />}
+                {active && <ActiveTab vestedNftsData={vestedNftsData} />}
+                {exhaust && <ExhaustedTab vestedNftsData={vestedNftsData} />}
 
             </div>
         </div>

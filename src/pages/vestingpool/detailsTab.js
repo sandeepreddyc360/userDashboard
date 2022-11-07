@@ -1,6 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import vestingContract from '../../services/vestingContract'
 
-function detailsTab() {
+function DetailsTab() {
+    const [totalReward,setTotalReward]=useState(0)
+    const WalletAddress = sessionStorage.getItem('WalletAddress')
+    // const getPriceOfNft = () => {
+
+    //     vestingContract.priceOfNFT().then((res) => {
+    //         console.log("price of nft", res)
+    //     }).catch(e => {
+    //         console.log(e)
+    //     })
+    // }
+
+    const totalRewards = () => {
+        vestingContract.totalReward(WalletAddress).then((res) => {
+            console.log('total rewards', res)
+            setTotalReward(parseInt(res._hex, 16))
+           
+        }).catch((e) => {
+            console.log(e)
+        })
+    }
+
+
+    useEffect(() => {
+        // getPriceOfNft()
+        totalRewards()
+    }, [])
+
     return (
         <>
             <div class='classdetailstabMaindiv'>
@@ -17,7 +45,7 @@ function detailsTab() {
                         <span>XVT Value</span>
                     </div>
                     <div class='vestingpooltextspanDiv'>
-                        <span>56</span>
+                        <span>1000</span>
                     </div>
                 </div>
                 <div class='detailstabsubdivOne d-flex justify-content-between'>
@@ -25,7 +53,7 @@ function detailsTab() {
                         <span>Total Funds</span>
                     </div>
                     <div class='vestingpooltextspanDiv'>
-                        <span>4544</span>
+                        <span>{totalReward}</span>
                     </div>
                 </div>
             </div>
@@ -33,4 +61,4 @@ function detailsTab() {
     )
 }
 
-export default detailsTab
+export default DetailsTab
