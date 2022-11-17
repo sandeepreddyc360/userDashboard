@@ -5,7 +5,7 @@ import nextarrow from '../../assets/nextarrowbtn.png'
 import prevrow from '../../assets/rightarrow.png'
 import vestingContract from '../../services/vestingContract'
 import dayjs from 'dayjs'
-
+import "./vestingpool.css"
 function AllocationTab({ vestedNftsData }) {
 
     const [Allocation, setAllocation] = useState();

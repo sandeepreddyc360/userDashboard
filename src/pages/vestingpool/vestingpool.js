@@ -20,16 +20,28 @@ import DetailsTab from "./detailsTab"
 import AllocationTab from './allocationTab'
 import ActiveTab from './activeTab'
 import ExhaustedTab from "./exhaustedTab"
+import axios from 'axios'
+import dayjs from "dayjs"
 
 const Vestingpool = () => {
 
     const navigate = useNavigate();
+    const walletAddress = sessionStorage.getItem("WalletAddress")
 
     const WalletAddress = sessionStorage.getItem("WalletAddress")
     const [vestedNftsData, setVestedNftsData] = useState()
 
+    const [popup, setPopup] = useState(false)
+    const [Nfts, setNfts] = useState()
+    const [selectedTokenID, setSelectedTokenID] = useState()
+
+
     const [details, setDetails] = useState(true)
     const [allocation, setAllocation] = useState(false)
+    const [cont, setCont] = useState(false)
+    const popupcancel = () => {
+        setPopup(false)
+    }
 
     const detailshandler = () => {
         setDetails(true)
@@ -75,9 +87,74 @@ const Vestingpool = () => {
         })
     }
 
+    const vestNfts = () => {
+        setPopup(true)
+        setCont(false)
+    }
+
+
+
+    var last;
+    document.addEventListener('input', (e) => {
+        if (e.target.getAttribute('name') == "myRadios") {
+            if (last)
+                last.checked = false;
+            setCont(true)
+        }
+        e.target.checked = true;
+        last = e.target;
+    })
+
+    const getNFTS = async () => {
+        try {
+            const res = await axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=${walletAddress}`)
+            if (res) {
+                console.log("NFTS", res.data.ownedNfts)
+                setNfts(res.data.ownedNfts)
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }
+    const verify = async () => {
+        try {
+            let res = await smartContract.getApproved(selectedTokenID)
+            console.log("res", res)
+            if (parseInt(res, 16) === 0) {
+                let tx = await smartContract.approve(vestingContractAddress, selectedTokenID);
+                let receipt = await tx.wait()
+                console.log("recepit", receipt)
+                if (receipt) {
+                    vestingContract.vesting(selectedTokenID).then((response) => {
+                        console.log("vesting res", response)
+                        if (response) {
+
+                            setPopup(false)
+                        }
+                    }).catch(e => {
+                        console.log("vesting error", e)
+                    })
+                }
+
+            } else {
+                alert("Already approved")
+                setPopup(false)
+
+            }
+
+
+        }
+        catch (e) {
+            console.log(e)
+        }
+
+    }
+
     useEffect(() => {
         listOfNfts()
-    }, [])
+        getNFTS()
+    }, [popup])
 
 
 
@@ -100,11 +177,12 @@ const Vestingpool = () => {
                 <img class='vestingpoollogoimg' src={vestingpoollogoimg} alt='not-visible' />
                 <div class='vestingpoolcryptoraptortextInfoDiv d-flex flex-column'>
                     <span class='vestingpoolcryptoraptortext'>Crypto Raptors</span>
-                    <span class='vestingpoolcrypytoraptorinfo'>NOTA is the first NFT from Notafi Ecosystem
-                    </span>
-                    <div class='d-flex justify-content-between align-items-center openseadiscordlogodiv'>
-                        <img class='openseaimg' src={opensea} alt='not-visible' />
-                        <img class='discordimg' src={discord} alt='not-visible' />
+                    <span class='vestingpoolcrypytoraptorinfo'>NOTA is the first NFT from Notafi Ecosystem</span>
+
+                    <div className='d-flex justify-content-between align-items-center openseadiscordlogodiv'>
+                        <div><img class='openseaimg' src={opensea} alt='not-visible' /></div>
+                        <div><img class='discordimg' src={discord} alt='not-visible' /></div>
+                        <div><button className='vestNftbtn' onClick={vestNfts} >Vest Nfts</button></div>
                     </div>
                 </div>
             </div>
@@ -133,6 +211,56 @@ const Vestingpool = () => {
                 {exhaust && <ExhaustedTab vestedNftsData={vestedNftsData} />}
 
             </div>
+
+            {popup &&
+
+                <div>
+                    <div class="ongoingpopupmaindiv"></div>
+                    <div class='ongoingprojectsubcenterDivpopup d-flex flex-column justify-content-center align-items-center'>
+                        <div class="popupsubboxDiv d-flex flex-column align-items-center ">
+                            <div class='chooseyournftpopdiv'>
+                                <span>Choose Your NFT</span>
+                            </div>
+                            <div class='ongoingpopupscrollDiv'>
+                                {
+                                    Nfts?.map((i, index) =>
+
+                                        <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
+                                            <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
+
+                                                <div class='popupinfodiv'>
+                                                    {`${index + 1}/${Nfts.length}`}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {parseInt(i.id.tokenId, 16)}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {i.metadata.name}
+                                                </div>
+                                                <div class='popupinfodiv d-flex align-items-center justify-content-center'>
+                                                    <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            </div>
+
+
+                        </div>
+                        <div class='buttonspopupDiv d-flex justify-content-between'>
+                            <button class='popupcancel' onClick={popupcancel}>Cancel</button>
+                            <button class='popupcontinue' style={{ display: cont ? 'block' : 'none' }} onClick={() => verify()}>Continue</button>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
         </div>
 
     )

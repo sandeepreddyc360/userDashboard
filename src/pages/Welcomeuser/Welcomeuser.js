@@ -26,52 +26,16 @@ function Welcomeuser() {
   const [Nfts, setNfts] = useState()
   const WalletAddress = sessionStorage.getItem("WalletAddress")
   console.log("wallter add", WalletAddress)
-  async function handleMetamask() {
-    let isReturningUser
-    let ReturningUser
 
-    //  solution one start
-    //   const accounts = await window.ethereum.request({
-    //     method: "wallet_requestPermissions",
-    //     params: [{
-    //         eth_accounts: {}
-    //     }]
-    // }).then(() => ethereum.request({
-    //     method: 'eth_requestAccounts'
-    // }))
-    // const account = accounts[0]
-    // solution one end
 
-    // solution Two start
-    const walletAddress = await window.ethereum.request({
-      method: "eth_requestAccounts",
-      methodNew: "eth_requestAccounts",
 
-      params: [
-        {
-          eth_accounts: {},
-        },
-      ]
-    });
 
-    if (!isReturningUser) {
 
-      await window.ethereum.request({
-        method: "wallet_requestPermissions",
-        require: window.location.href = '/',
-        methodNew: "eth_requestAccounts",
-        params: [
-          {
-            eth_accounts: {},
-          }
-
-        ]
-      });
-
-    }
-    // solution Two End
-
+  const logout = () => {
+    sessionStorage.removeItem('WalletAddress')
+    navigate("/")
   }
+
   const getNFTS = () => {
     axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=${WalletAddress}`)
       .then(res => {
@@ -116,7 +80,7 @@ function Welcomeuser() {
         <span class='welcomeUserText'>Welcome, User</span>
         <div class='userIconDiv d-flex justify-content-end'>
           {/* <img class='logoutButton' src={Loginimg} alt='not visible' onClick={()=>navigate('/')} /> */}
-          <img class='logoutButton' src={Loginimg} alt='not visible' onClick={handleMetamask} />
+          <img class='logoutButton' src={Loginimg} alt='logout' onClick={logout} />
         </div>
       </div>
       <div class='profileImagesMainDiv d-flex flex-column align-items-center'>
