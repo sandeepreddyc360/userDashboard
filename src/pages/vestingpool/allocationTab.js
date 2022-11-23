@@ -92,6 +92,7 @@ function AllocationTab({ vestedNftsData }) {
                             <span class='serialnumberheadings'>Action</span>
                         </div>
                     </div>
+                    <div class='scrollDivallocation'>
                     {
                         Allocation?.map((i, index) => (
                             <div class='activetextinfotabTwo d-flex justify-content-between'>
@@ -99,7 +100,7 @@ function AllocationTab({ vestedNftsData }) {
                                     <span>{index + 1}</span>
                                 </div>
                                 <div class='activetabtextspanDivTwo'>
-                                    <span> {`${index + 2}/${parseInt(i.month._hex)}/2022`}   </span>
+                                    <span> {`${index + 2}/${parseInt(i.month._hex)}/2022`}</span>
                                 </div>
                                 <div class='activetabtextspanDivOne'>
                                     <span>{parseInt(i.amount._hex)} </span>
@@ -113,6 +114,7 @@ function AllocationTab({ vestedNftsData }) {
                             </div>
                         ))
                     }
+                    </div>
 
 
                 </div>

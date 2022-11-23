@@ -42,7 +42,7 @@ function DetailsTab() {
                 </div>
                 <div class='detailstabsubdivTwo d-flex justify-content-between align-items-center'>
                     <div class='vestingpooltextspanDiv'>
-                        <span>XVT Value</span>
+                        <span>Nota Value</span>
                     </div>
                     <div class='vestingpooltextspanDiv'>
                         <span>1000</span>

@@ -39,6 +39,9 @@ const Vestingpool = () => {
     const [details, setDetails] = useState(true)
     const [allocation, setAllocation] = useState(false)
     const [cont, setCont] = useState(false)
+    const [active, setActive] = useState(false)
+    const [exhaust, setExhaust] = useState(false)
+
     const popupcancel = () => {
         setPopup(false)
     }
@@ -50,8 +53,6 @@ const Vestingpool = () => {
         setActive(false)
     }
 
-
-
     const allocationhandler = () => {
         setDetails(false)
         setAllocation(true)
@@ -59,17 +60,12 @@ const Vestingpool = () => {
         setExhaust(false)
     }
 
-
-    const [active, setActive] = useState(false)
-
     const activehandler = () => {
         setDetails(false)
         setAllocation(false)
         setExhaust(false)
         setActive(true)
     }
-
-    const [exhaust, setExhaust] = useState(false)
 
     const exhausthandler = () => {
         setDetails(false)
@@ -151,9 +147,21 @@ const Vestingpool = () => {
 
     }
 
+    const datauri = () => {
+        smartContract.tokenURI('0x19').then(res => {
+            // const data = axios.get(res)
+            axios.get(res).then(data => {
+                console.log("data", data.data.name)
+            })
+
+        })
+    }
+
+
     useEffect(() => {
         listOfNfts()
         getNFTS()
+        datauri()
     }, [popup])
 
 
@@ -204,6 +212,7 @@ const Vestingpool = () => {
                 </div>
 
             </div>
+            
             <div class='renderinginfoMainDiv d-flex justify-content-start '>
                 {details && <DetailsTab vestedNftsData={vestedNftsData} />}
                 {allocation && <AllocationTab vestedNftsData={vestedNftsData} />}
@@ -223,30 +232,37 @@ const Vestingpool = () => {
                             </div>
                             <div class='ongoingpopupscrollDiv'>
                                 {
-                                    Nfts?.map((i, index) =>
+                                    
+                                        Nfts?.map((i, index) =>
 
-                                        <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
-                                            <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
+                                            <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
+                                                <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
 
-                                                <div class='popupinfodiv'>
-                                                    {`${index + 1}/${Nfts.length}`}
-                                                </div>
-                                                <div class='popupinfodiv'>
-                                                    {parseInt(i.id.tokenId, 16)}
-                                                </div>
-                                                <div class='popupinfodiv'>
-                                                    {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
-                                                </div>
-                                                <div class='popupinfodiv'>
-                                                    {i.metadata.name}
-                                                </div>
-                                                <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                                    <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
-                                                </div>
+                                                    <div class='popupinfodiv'>
+                                                        {`${index + 1}/${Nfts.length}`}
+                                                    </div>
+                                                    <div class='popupinfodiv'>
+                                                        {parseInt(i.id.tokenId, 16)}
+                                                    </div>
+                                                    <div class='popupinfodiv'>
+                                                        {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
+                                                    </div>
+                                                    <div class='popupinfodiv'>
+                                                        {i.metadata.name}
+                                                    </div>
+                                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
+                                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
+                                                    </div>
 
+                                                </div>
                                             </div>
-                                        </div>
-                                    )
+                                        )
+                                }
+                                {
+                                    Nfts?.length === 0 &&
+                                    <div>
+                                        <h1 className='text-center ' style={{ color: 'white', opacity: '0.5', fontSize: "12px" }}>There are no NFTS in your wallet.</h1>
+                                    </div>
                                 }
                             </div>
 

@@ -4,7 +4,7 @@ import smartContract from '../../services/smartContract'
 import vestingContract from '../../services/vestingContract'
 
 function activeTab({ vestedNftsData }) {
-    console.log(vestedNftsData)
+    console.log("active tab data ", vestedNftsData)
 
     const dateConversition = (dateNumber) => {
         const date = new Date(dateNumber * 1000);
@@ -13,7 +13,7 @@ function activeTab({ vestedNftsData }) {
 
 
 
-
+    
     return (
         <>
             <div class='activetabMaindiv'>
@@ -32,6 +32,7 @@ function activeTab({ vestedNftsData }) {
                     </div>
 
                 </div>
+                <div class='scrollDivallocation'>
 
 
                 {
@@ -57,6 +58,7 @@ function activeTab({ vestedNftsData }) {
                     )
                     )
                 }
+                </div>
 
 
             </div>

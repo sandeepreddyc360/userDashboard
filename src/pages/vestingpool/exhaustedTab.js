@@ -19,7 +19,7 @@ function exhaustedTab({ vestedNftsData }) {
                 </div>
 
             </div>
-
+            <div class='scrollDivallocation'>
 
             {
                 vestedNftsData.map((i, index) => (
@@ -45,7 +45,7 @@ function exhaustedTab({ vestedNftsData }) {
                 )
                 )
             }
-
+            </div>
 
         </div>
     )

@@ -80,7 +80,7 @@ function Welcomeuser() {
         <span class='welcomeUserText'>Welcome, User</span>
         <div class='userIconDiv d-flex justify-content-end'>
           {/* <img class='logoutButton' src={Loginimg} alt='not visible' onClick={()=>navigate('/')} /> */}
-          <img class='logoutButton' src={Loginimg} alt='logout' onClick={logout} />
+          <img class='logoutButton ' style={{cursor:"pointer"}} src={Loginimg} alt='logout' onClick={logout} />
         </div>
       </div>
       <div class='profileImagesMainDiv d-flex flex-column align-items-center'>
@@ -101,9 +101,9 @@ function Welcomeuser() {
           </div>
           <div class='metamaskMainDiv d-flex justify-content-end align-items-center'>
             <div class='MetamaskTextMainDiv'>
-              <div class='metamasktextSubDiv d-flex align-items-center justify-content-between'>
-                <img class='copy' src={copy} alt='not visible' />
-                <span>Metamask Wallet ID</span>
+              <div class='metamasktextSubDiv d-flex align-items-center justify-content-between text-center'>
+                <span></span>
+                <span className=''>{WalletAddress.substring(0, 10) + '...'}</span>
               </div>
             </div>
             <div class='metamaskLogoDiv d-flex justify-content-center align-items-center'>
@@ -120,9 +120,7 @@ function Welcomeuser() {
         <div class='welcomeuserSearchbar d-flex justify-contengtt-center align-items-center'>
           <input class='welcomeusersearchinput' placeholder='Search' type={'text'} />
         </div>
-        <div class='settingsDiv d-flex justify-content-center align-items-center'>
-          <img class="settingsicon" src={settings} />
-        </div>
+
       </div>
       <div class='gridborderMainDiv d-flex justify-content-center'>
         <div class='gridBorderDiv d-flex justify-content-center align-items-center'>
@@ -132,7 +130,7 @@ function Welcomeuser() {
 
             <div class='gridScrollSubDiv row'>
               {
-                Nfts?.map((i) => {
+                Nfts?.map((i, index) => {
                   return (
                     <div class="gridcardDIv d-flex flex-column align-items-center " key={i.id} onClick={() => navigate(`/token/${parseInt(i.id.tokenId, 16)}`)} >
                       <div class='skurllroseimage' >
@@ -143,14 +141,19 @@ function Welcomeuser() {
                           <span class='skullandRosestext'>{i.metadata.name}</span>
                           <span class='skullrosestokentextDiv'>#{parseInt(i.id.tokenId, 16)}</span>
                           <div class='d-flex justify-content-between align-items-center ethereumDiv'>
-                            <img class='ethereumlogoimg' src={ethereumskull} alt='not-visible' />
-                            <span class='ethereumnumber'>--</span>
+                            <span class='ethereumnumber'>{`1/1`}</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   )
                 })
+              }
+              {
+                Nfts?.length === 0 &&
+                <div>
+                  <h1 className='text-center ' style={{ color: 'white', opacity: '0.5', fontSize: "25px" }}>There are no NFTS in your wallet.</h1>
+                </div>
               }
             </div>
 

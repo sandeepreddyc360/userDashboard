@@ -136,8 +136,8 @@
     text-align: center;
 }
 
+
 .renderinginfoMainDiv {
-    height: 100%;
     margin-top: 2%;
     width: 65%;
     margin-left: 10%;
@@ -197,11 +197,17 @@
 .activetextinfotabTwo {
     width: 100%;
     height: 2vw;
-    background-color: #40334B;
+   
 }
+.activetextinfotabTwo:nth-child(odd){
+    background-color: #40334B;
 
+}
+.activetextinfotabTwo:nth-child(even){
+    background-color: #313131;
+
+}
 .activetabtextspanDivOne {
-    /* background-color: yellow; */
     height: 100%;
     width: 15%;
     text-align: center;
@@ -213,7 +219,6 @@
 }
 
 .activetabtextspanDivTwo {
-    /* background-color: yellow; */
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -264,4 +269,12 @@
     margin-top: 2%;
     font-size: 0.8vw;
     height: 1.5vw;
+}
+.scrollDivallocation{
+    height: 20.5vw;
+    overflow-y: scroll;
+    /* width: 70vw; */
+}
+.scrollDivallocation::-webkit-scrollbar {
+    display: none;
 }

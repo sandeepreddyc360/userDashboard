@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import '../Userdetail/Userdetail.css'
 import arrowbtn from '../../assets/arrowbtn.png'
-import search from '../../assets/searchimage.png'
-import settings from '../../assets/detailssettingsimg.png'
-import skull from '../../assets/detailsSkullImg.png'
-import eye from '../../assets/eyeicon.png'
-import favicon from '../../assets/favicon.png'
-import ethereum from '../../assets/ethereum.png'
 import Navbar from '../../components/Navbar'
 import Circles from '../../components/CirclesNav'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -64,16 +58,12 @@ function Userdetail() {
       <Navbar />
       <div class='detailsSearchbarMainDiv d-flex align-items-center justify-content-between'>
         <img class='arrowbtn' onClick={() => navigate("/welcomeuser")} src={arrowbtn} alt='not visible' />
-        <div class='deatilsearchsubDiv d-flex justify-content-around'>
-          <div class='detailsSearchbar d-flex align-items-center'>
-            <input class='detailsSearchbarInput' type={'text'} alt='not visible' placeholder='Search' />
+        <div class='deatilsearchsubDiv d-flex justify-content-evenly'>
+          <div class=' d-flex align-items-center'>
+            <h1>NFT Details</h1>
           </div>
-          <div class='searchIconDivdetails d-flex justify-content-center align-items-center'>
-            <img class='detailsSearchicon' src={search} alt='not visible' />
-          </div>
-          <div class='deatilsSettingsDiv d-flex justify-content-center align-items-center'>
-            <img class='detailsSearchicon' src={settings} alt='not visible' />
-          </div>
+
+
         </div>
         <div>
         </div>
@@ -102,13 +92,8 @@ function Userdetail() {
             <span onClick={descriptionhandler}>Description</span>
             <div style={{ display: description ? 'block' : null }} id="description" class=' horizontalLine '></div>
           </div>
-          <div class='lineborderTwoDiv'>
 
-          </div>
-          <div class='detailsdescriptiontextBoxDiv d-flex flex-column align-items-center '>
-            <span onClick={propertieshandler}>Properties</span>
-            <div style={{ display: properties ? 'block' : null }} class=' horizontalLine '></div>
-          </div>
+
           <div class='lineborderThreeDiv'>
 
           </div>
@@ -124,10 +109,7 @@ function Userdetail() {
           <div class='discriptionTextDisplaysubdiv '>
 
             {description ? <p>{singleNft?.metadata?.description}</p> : null}
-            {properties ?
-              <p>--</p> : null}
-            {itemactive ?
-              < p > --</p> : null}
+            {itemactive ? < p > --</p> : null}
           </div>
         </div>
       </div>

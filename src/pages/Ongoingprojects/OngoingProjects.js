@@ -49,7 +49,7 @@ function OngoingProjects() {
                                 </div>
                                 <div class='numbersMainDIvOne d-flex flex-column'>
                                     <span >-  995</span>
-                                    <span >-  Lorem</span>
+                                    <span >-  12-05-20</span>
                                 </div>
                             </div>
                         </div>
@@ -70,7 +70,7 @@ function OngoingProjects() {
                                             <span >Genesis price</span>
                                         </div>
                                         <div class='d-flex flex-column'>
-                                            <span >- Lorem</span>
+                                            <span >- 8522</span>
                                             <span >- 584</span>
                                             <div class='d-flex justify-content-between align-items-center'>
                                                 <span>- 54 </span>
@@ -85,7 +85,7 @@ function OngoingProjects() {
                             <span class='timePeriodText' >Time Period - 12 months</span>
                         </div>
                     </div>
-                    <div class='boxOneDiv d-flex flex-column align-items-center' style={{ cursor: "not-allowed" }} onClick={popuphandler}>
+                    <div class='boxOneDiv d-flex flex-column align-items-center' style={{ cursor: "not-allowed" }} >
                         <div class='boxwelcomeSubDiv d-flex justify-content-between'>
                             <div class='ongoingWelcomeTextDiv' >
                                 Welcome, User
@@ -96,8 +96,8 @@ function OngoingProjects() {
                                     <span >Next Unlock</span>
                                 </div>
                                 <div class='numbersMainDIvOne d-flex flex-column'>
-                                    <span >-  995</span>
-                                    <span >-  Lorem</span>
+                                    <span >-  4469</span>
+                                    <span >-  24-08-20</span>
                                 </div>
                             </div>
                         </div>
@@ -118,8 +118,8 @@ function OngoingProjects() {
                                             <span >Genesis price</span>
                                         </div>
                                         <div class='d-flex flex-column'>
-                                            <span >- Lorem</span>
-                                            <span >- 584</span>
+                                            <span >- 486</span>
+                                            <span >- 689</span>
                                             <div class='d-flex justify-content-between align-items-center'>
                                                 <span >- 54 </span>
                                                 <img class='ethereumLogoongoing' src={ethereumLogo} alt='not visible' />
