@@ -7,9 +7,9 @@ import vestingContract from '../../services/vestingContract'
 import dayjs from 'dayjs'
 import "./vestingpool.css"
 function AllocationTab({ vestedNftsData }) {
-
+    console.log("Allocation tab data", vestedNftsData)
     const [Allocation, setAllocation] = useState();
-    const [selectedToken, setSelectedToken] = useState(parseInt(vestedNftsData[0].tokenId._hex));
+    const [selectedToken, setSelectedToken] = useState(parseInt(vestedNftsData[0]?.tokenId._hex));
     console.log('vestedNftsData', vestedNftsData)
     console.log("selected token", selectedToken)
 
@@ -23,11 +23,11 @@ function AllocationTab({ vestedNftsData }) {
     }
 
 
+
     const Claim = (month) => {
         vestingContract.claimRewardOfANFTByMonth(selectedToken, month).then((res) => {
             console.log('claimRewardOfANFTByMonth   --', res)
             if (res) {
-
                 alert("Claimed successfully,wait for metamask to respond")
             }
         })
@@ -58,7 +58,7 @@ function AllocationTab({ vestedNftsData }) {
                         <>
                             {
                                 vestedNftsData?.map((i) => (
-                                    <h1 style={{ color: 'white', fontSize: '13px', cursor: 'pointer' }} onClick={() => { setSelectedToken(parseInt(i.tokenId._hex)) }}>{parseInt(i.tokenId._hex)}</h1>
+                                    <h1 className={selectedToken === parseInt(i.tokenId._hex) && "underlineSelectedToken"} style={{ color: 'white', fontSize: '13px', cursor: 'pointer', margin: '0px' }} onClick={() => { setSelectedToken(parseInt(i.tokenId._hex)) }}>{parseInt(i.tokenId._hex)}</h1>
                                 ))
                             }
                         </>
@@ -93,27 +93,27 @@ function AllocationTab({ vestedNftsData }) {
                         </div>
                     </div>
                     <div class='scrollDivallocation'>
-                    {
-                        Allocation?.map((i, index) => (
-                            <div class='activetextinfotabTwo d-flex justify-content-between'>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>{index + 1}</span>
+                        {
+                            Allocation?.map((i, index) => (
+                                <div class='activetextinfotabTwo d-flex justify-content-between'>
+                                    <div class='activetabtextspanDivOne'>
+                                        <span>{index + 1}</span>
+                                    </div>
+                                    <div class='activetabtextspanDivTwo'>
+                                        <span> {`${index + 2}-${parseInt(i.month._hex)}-2022`}</span>
+                                    </div>
+                                    <div class='activetabtextspanDivOne'>
+                                        <span>{parseInt(i.amount._hex)} </span>
+                                    </div>
+                                    <div class='activetabtextspanDivTwo'>
+                                        <span>{i.rewardClaimed === false ? "To be Claimed" : "Claimed"} </span>
+                                    </div>
+                                    <div class='activetabtextspanDivTwo'>
+                                        <button class='claimbutton' onClick={() => Claim(parseInt(i.month._hex))}>Claim</button>
+                                    </div>
                                 </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span> {`${index + 2}/${parseInt(i.month._hex)}/2022`}</span>
-                                </div>
-                                <div class='activetabtextspanDivOne'>
-                                    <span>{parseInt(i.amount._hex)} </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <span>{i.rewardClaimed === false ? "To be Claimed" : "Claimed"} </span>
-                                </div>
-                                <div class='activetabtextspanDivTwo'>
-                                    <button class='claimbutton' onClick={() => Claim(parseInt(i.month._hex))}>Claim</button>
-                                </div>
-                            </div>
-                        ))
-                    }
+                            ))
+                        }
                     </div>
 
 

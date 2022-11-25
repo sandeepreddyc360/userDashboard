@@ -197,16 +197,19 @@
 .activetextinfotabTwo {
     width: 100%;
     height: 2vw;
-   
+
 }
-.activetextinfotabTwo:nth-child(odd){
+
+.activetextinfotabTwo:nth-child(odd) {
     background-color: #40334B;
 
 }
-.activetextinfotabTwo:nth-child(even){
+
+.activetextinfotabTwo:nth-child(even) {
     background-color: #313131;
 
 }
+
 .activetabtextspanDivOne {
     height: 100%;
     width: 15%;
@@ -270,11 +273,23 @@
     font-size: 0.8vw;
     height: 1.5vw;
 }
-.scrollDivallocation{
+
+.scrollDivallocation {
     height: 20.5vw;
     overflow-y: scroll;
     /* width: 70vw; */
 }
+
 .scrollDivallocation::-webkit-scrollbar {
     display: none;
+}
+
+
+
+.underlineSelectedToken {
+    border-Bottom: 5px solid #0070DD;
+
+    border-bottom-left-radius: 2px;
+    border-bottom-right-radius: 2px;
+
 }

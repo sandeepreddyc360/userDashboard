@@ -1,4 +1,4 @@
-export const vestingContractAddress = "0xbEC9099E10b94AA1Cc40e431D17345ef58cF8Dd2";
+export const vestingContractAddress = "0x865A9E4775a6A04F22E800E25B2E85338939Af1e";
 
 export const ABI = [
     {

@@ -117,6 +117,7 @@ const Vestingpool = () => {
         try {
             let res = await smartContract.getApproved(selectedTokenID)
             console.log("res", res)
+            //to approve the token
             if (parseInt(res, 16) === 0) {
                 let tx = await smartContract.approve(vestingContractAddress, selectedTokenID);
                 let receipt = await tx.wait()
@@ -133,11 +134,18 @@ const Vestingpool = () => {
                     })
                 }
 
-            } else {
-                alert("Already approved")
-                setPopup(false)
+            } else if ((parseInt(res, 16) !== 0)) {
+                vestingContract.vesting(selectedTokenID).then((response) => {
+                    console.log("vesting res", response)
+                    if (response) {
 
+                        setPopup(false)
+                    }
+                }).catch(e => {
+                    console.log("vesting error", e)
+                })
             }
+
 
 
         }
@@ -212,7 +220,7 @@ const Vestingpool = () => {
                 </div>
 
             </div>
-            
+
             <div class='renderinginfoMainDiv d-flex justify-content-start '>
                 {details && <DetailsTab vestedNftsData={vestedNftsData} />}
                 {allocation && <AllocationTab vestedNftsData={vestedNftsData} />}
@@ -232,31 +240,31 @@ const Vestingpool = () => {
                             </div>
                             <div class='ongoingpopupscrollDiv'>
                                 {
-                                    
-                                        Nfts?.map((i, index) =>
 
-                                            <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
-                                                <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
+                                    Nfts?.map((i, index) =>
 
-                                                    <div class='popupinfodiv'>
-                                                        {`${index + 1}/${Nfts.length}`}
-                                                    </div>
-                                                    <div class='popupinfodiv'>
-                                                        {parseInt(i.id.tokenId, 16)}
-                                                    </div>
-                                                    <div class='popupinfodiv'>
-                                                        {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
-                                                    </div>
-                                                    <div class='popupinfodiv'>
-                                                        {i.metadata.name}
-                                                    </div>
-                                                    <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                                        <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
-                                                    </div>
+                                        <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
+                                            <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
 
+                                                <div class='popupinfodiv'>
+                                                    {`${index + 1}/${Nfts.length}`}
                                                 </div>
+                                                <div class='popupinfodiv'>
+                                                    {parseInt(i.id.tokenId, 16)}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
+                                                </div>
+                                                <div class='popupinfodiv'>
+                                                    {i.metadata.name}
+                                                </div>
+                                                <div class='popupinfodiv d-flex align-items-center justify-content-center'>
+                                                    <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
+                                                </div>
+
                                             </div>
-                                        )
+                                        </div>
+                                    )
                                 }
                                 {
                                     Nfts?.length === 0 &&
