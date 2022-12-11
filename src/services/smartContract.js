@@ -8,11 +8,12 @@ import { ABI, contractAddress } from "../config/smartConfig";
 // what MetaMask injects as window.ethereum into each page
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 // MetaMask requires requesting permission to connect users accounts
-provider.send("eth_requestAccounts", []);
+// provider.send("eth_requestAccounts", []);
 // The MetaMask plugin also allows signing transactions to
 // send ether and pay to change state within the blockchain.
 // For this, you need the account signer...
 const signer = provider.getSigner();
+   
 // await signer.getAddress()
 const smartContract = new ethers.Contract(contractAddress, ABI, signer);
 export default smartContract;

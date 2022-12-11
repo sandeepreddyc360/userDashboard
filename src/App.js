@@ -11,15 +11,16 @@ import smartContract from './services/smartContract';
 import vestingContract from "./services/vestingContract"
 import detailsTab from './pages/vestingpool/detailsTab';
 function App() {
-  var walletAddress
+  var walletAddress;
   vestingContract.signer.getAddress().then((res) => {
     walletAddress = res
     sessionStorage.setItem("WalletAddress",res)
     console.log("res wall", res)
   });
 
-
+  if (window.ethereum) {
   return (
+    
     <div>
       <BrowserRouter>
         <Routes>
@@ -39,6 +40,10 @@ function App() {
 
     </div>
   );
+  }else{
+    window.ethereum.request({ method: 'eth_requestAccounts' });
+    return <div className='walletDisconnected'> connect to wallet using metamask extension</div>
+  }
 }
 
 export default App;

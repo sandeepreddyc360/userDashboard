@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import '../../pages/vestingpool/vestingpool.css'
 import vestingpoobackarrow from '../../assets/vestingpoobackarrow.png'
 import vestingpoollogoimg from '../../assets/cryptoraptorImg.png'
@@ -22,16 +22,18 @@ import ActiveTab from './activeTab'
 import ExhaustedTab from "./exhaustedTab"
 import axios from 'axios'
 import dayjs from "dayjs"
+import { getNFTS, verify, popupcancel, listOfNfts, vestNfts,_setContSubscriber, _vestedNftsDataSubscriber, _setNftsSubscriber, _setPopupSubscriber, _spinnerLoading } from '../../services/vestingpoolservice'
+import Spinner from '../../components/Spinner'
+
 
 const Vestingpool = () => {
 
     const navigate = useNavigate();
-    const walletAddress = sessionStorage.getItem("WalletAddress")
+  
 
-    const WalletAddress = sessionStorage.getItem("WalletAddress")
-    const [vestedNftsData, setVestedNftsData] = useState()
-
-    const [popup, setPopup] = useState(false)
+    // const WalletAddress = sessionStorage.getItem("WalletAddress")
+    // const [vestedNftsData, setVestedNftsData] = useState()
+    const [popup, setPopup] = useState();
     const [Nfts, setNfts] = useState()
     const [selectedTokenID, setSelectedTokenID] = useState()
 
@@ -41,10 +43,8 @@ const Vestingpool = () => {
     const [cont, setCont] = useState(false)
     const [active, setActive] = useState(false)
     const [exhaust, setExhaust] = useState(false)
-
-    const popupcancel = () => {
-        setPopup(false)
-    }
+    const [vestedNftsData, setVestedNftsData] = useState()
+    const [isLoading, setIsLoading] = useState(true);
 
     const detailshandler = () => {
         setDetails(true)
@@ -74,23 +74,18 @@ const Vestingpool = () => {
         setExhaust(true)
     }
 
-    const listOfNfts = () => {
-
-        vestingContract.listOfNFTs(WalletAddress).then((res) => {
-
-            console.log("list", res)
-            setVestedNftsData(res)
-        })
+    // let  Nfts = false;
+    const vestNftsFromApi = ()=>{
+        console.log("NFTS",Nfts);
+        setPopup(true);
+        setCont(false);
+        console.log(popup);
     }
-
-    const vestNfts = () => {
-        setPopup(true)
-        setCont(false)
+    const popupcancelCall=  () =>{
+        setPopup(false);
+        
     }
-
-
-
-    var last;
+    let last;
     document.addEventListener('input', (e) => {
         if (e.target.getAttribute('name') == "myRadios") {
             if (last)
@@ -99,167 +94,116 @@ const Vestingpool = () => {
         }
         e.target.checked = true;
         last = e.target;
-    })
-
-    const getNFTS = async () => {
-        try {
-            const res = await axios.get(`https://eth-goerli.g.alchemy.com/v2/-Q2VqKv3_F2tx6USzf0rnE43QnLn3e5X/getNFTs/?contractAddresses[]=0x1534D413F7b9215C5167C78810fdEa99ba429990&omitMetadata=false&owner=${walletAddress}`)
-            if (res) {
-                console.log("NFTS", res.data.ownedNfts)
-                setNfts(res.data.ownedNfts)
-            }
-        }
-        catch (error) {
-            console.log(error)
-        }
-    }
-    const verify = async () => {
-        try {
-            let res = await smartContract.getApproved(selectedTokenID)
-            console.log("res", res)
-            //to approve the token
-            if (parseInt(res, 16) === 0) {
-                let tx = await smartContract.approve(vestingContractAddress, selectedTokenID);
-                let receipt = await tx.wait()
-                console.log("recepit", receipt)
-                if (receipt) {
-                    vestingContract.vesting(selectedTokenID).then((response) => {
-                        console.log("vesting res", response)
-                        if (response) {
-
-                            setPopup(false)
-                        }
-                    }).catch(e => {
-                        console.log("vesting error", e)
-                    })
-                }
-
-            } else if ((parseInt(res, 16) !== 0)) {
-                vestingContract.vesting(selectedTokenID).then((response) => {
-                    console.log("vesting res", response)
-                    if (response) {
-
-                        setPopup(false)
-                    }
-                }).catch(e => {
-                    console.log("vesting error", e)
-                })
-            }
-
-
-
-        }
-        catch (e) {
-            console.log(e)
-        }
-
-    }
-
-    const datauri = () => {
-        smartContract.tokenURI('0x19').then(res => {
-            // const data = axios.get(res)
-            axios.get(res).then(data => {
-                console.log("data", data.data.name)
-            })
+    });
+    const getData = ()=>{
+        _setNftsSubscriber.subscribe((res)=>{
+            setNfts(res);
 
         })
+        _vestedNftsDataSubscriber.subscribe((res)=>{
+            console.log("vested nft data res",res);
+            setVestedNftsData(res);
+        })
     }
-
-
     useEffect(() => {
-        listOfNfts()
-        getNFTS()
-        datauri()
-    }, [popup])
-
-
-
-
+        // setNfts(sessionStorage.getItem("getNFTS"));
+        console.log("popup", popup);
+        _spinnerLoading.subscribe((res)=>{
+            setIsLoading(res);
+        });
+        getData();
+    },[popup, Nfts, vestedNftsData]);
 
     return (
+        <>
+        {isLoading && (
+            <div>
+              <div className="loadingBackground">
+                <Spinner />
+              </div>
+            </div>
+          )}
         <div className='vestingpoolMainDiv d-flex flex-column align-items-center'>
-            <div class='vestingpoolcirclenavDiv'>
+            <div className='vestingpoolcirclenavDiv'>
                 <Circle />
             </div>
             <Navbar />
             <div className='vestingpoolheadingtextDiv d-flex align-items-center justify-content-between'>
                 <div className='vestingpoolbackbutton d-flex justify-content-center align-items-center'>
-                    <img class='vestingpoobackarrow' src={vestingpoobackarrow} alt='not visible' onClick={() => navigate("/ongoingproject")} />
+                    <img className='vestingpoobackarrow' src={vestingpoobackarrow} alt='not visible' onClick={() => navigate("/ongoingproject")} />
                 </div>
-                <span class='vestingpooltextheading'>Vesting Pool 1</span>
+                <span className='vestingpooltextheading'>Vesting Pool 1</span>
                 <div></div>
             </div>
-            <div class='vestingpoolcryptomainDiv d-flex'>
-                <img class='vestingpoollogoimg' src={vestingpoollogoimg} alt='not-visible' />
-                <div class='vestingpoolcryptoraptortextInfoDiv d-flex flex-column'>
-                    <span class='vestingpoolcryptoraptortext'>Crypto Raptors</span>
-                    <span class='vestingpoolcrypytoraptorinfo'>NOTA is the first NFT from Notafi Ecosystem</span>
+            <div className='vestingpoolcryptomainDiv d-flex'>
+                <img className='vestingpoollogoimg' src={vestingpoollogoimg} alt='not-visible' />
+                <div className='vestingpoolcryptoraptortextInfoDiv d-flex flex-column'>
+                    <span className='vestingpoolcryptoraptortext'>Crypto Raptors</span>
+                    <span className='vestingpoolcrypytoraptorinfo'>NOTA is the first NFT from Notafi Ecosystem</span>
 
                     <div className='d-flex justify-content-between align-items-center openseadiscordlogodiv'>
-                        <div><img class='openseaimg' src={opensea} alt='not-visible' /></div>
-                        <div><img class='discordimg' src={discord} alt='not-visible' /></div>
-                        <div><button className='vestNftbtn' onClick={vestNfts} >Vest Nfts</button></div>
+                        <div><img className='openseaimg' src={opensea} alt='not-visible' /></div>
+                        <div><img className='discordimg' src={discord} alt='not-visible' /></div>
+                        <div><button className='vestNftbtn' onClick={vestNftsFromApi} >Vest Nfts</button></div>
                     </div>
                 </div>
             </div>
-            <div class='renderingalignDiv d-flex justify-content-start'>
+            <div className='renderingalignDiv d-flex justify-content-start'>
 
-                <div class='renderingbuttonMainDiv d-flex justify-content-between'>
+                <div className='renderingbuttonMainDiv d-flex justify-content-between'>
 
-                    <span id="details" onClick={detailshandler} style={{ background: details ? '#006BD4' : null, color: details ? '#FFFFFF' : null, borderRadius: details ? '0.5vw' : null }} class='renderingTextdetail'>Details</span>
-
-
-                    <span id="allocation" style={{ background: allocation ? '#006BD4' : null, color: allocation ? '#FFFFFF' : null, borderRadius: allocation ? '0.5vw' : null }} class='renderingtextallocation' onClick={allocationhandler}>Allocation</span>
+                    <span id="details" onClick={detailshandler} style={{ background: details ? '#006BD4' : null, color: details ? '#FFFFFF' : null, borderRadius: details ? '0.5vw' : null }} className='renderingTextdetail'>Details</span>
 
 
-                    <span id='active' style={{ background: active ? '#006BD4' : null, color: active ? '#FFFFFF' : null, borderRadius: active ? '0.5vw' : null }} class='renderingtextactive' onClick={activehandler}>Active</span>
+                    <span id="allocation" style={{ background: allocation ? '#006BD4' : null, color: allocation ? '#FFFFFF' : null, borderRadius: allocation ? '0.5vw' : null }} className='renderingtextallocation' onClick={allocationhandler}>Allocation</span>
 
 
-                    <span style={{ background: exhaust ? '#006BD4' : null, color: exhaust ? '#FFFFFF' : null, borderRadius: exhaust ? '0.5vw' : null }} id='exhausted' class='renderingtextexhastive' onClick={exhausthandler}>Exhausted</span>
+                    <span id='active' style={{ background: active ? '#006BD4' : null, color: active ? '#FFFFFF' : null, borderRadius: active ? '0.5vw' : null }} className='renderingtextactive' onClick={activehandler}>Active</span>
+
+
+                    <span style={{ background: exhaust ? '#006BD4' : null, color: exhaust ? '#FFFFFF' : null, borderRadius: exhaust ? '0.5vw' : null }} id='exhausted' className='renderingtextexhastive' onClick={exhausthandler}>Exhausted</span>
 
                 </div>
 
             </div>
 
-            <div class='renderinginfoMainDiv d-flex justify-content-start '>
+            <div className='renderinginfoMainDiv d-flex justify-content-start '>
                 {details && <DetailsTab vestedNftsData={vestedNftsData} />}
                 {allocation && <AllocationTab vestedNftsData={vestedNftsData} />}
                 {active && <ActiveTab vestedNftsData={vestedNftsData} />}
                 {exhaust && <ExhaustedTab vestedNftsData={vestedNftsData} />}
 
             </div>
-
+            
             {popup &&
 
                 <div>
-                    <div class="ongoingpopupmaindiv"></div>
-                    <div class='ongoingprojectsubcenterDivpopup d-flex flex-column justify-content-center align-items-center'>
-                        <div class="popupsubboxDiv d-flex flex-column align-items-center ">
-                            <div class='chooseyournftpopdiv'>
+                    <div className="ongoingpopupmaindiv"></div>
+                    <div className='ongoingprojectsubcenterDivpopup d-flex flex-column justify-content-center align-items-center'>
+                        <div className="popupsubboxDiv d-flex flex-column align-items-center ">
+                            <div className='chooseyournftpopdiv'>
                                 <span>Choose Your NFT</span>
                             </div>
-                            <div class='ongoingpopupscrollDiv'>
-                                {
+                            <div className='ongoingpopupscrollDiv'>
+                                {Object.values(Nfts).map((i, index) =>
+                                        // <h3 key = {index}>i[index]</h3>
+                                        <div className='popupudivcellsDiv d-flex justify-content-center' key={index}>
+                                            <div className='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
 
-                                    Nfts?.map((i, index) =>
-
-                                        <div class='popupudivcellsDiv d-flex justify-content-center' key={i}>
-                                            <div class='popupudivcellsSubDiv d-flex justify-content-between align-items-center'>
-
-                                                <div class='popupinfodiv'>
+                                                <div className='popupinfodiv'>
                                                     {`${index + 1}/${Nfts.length}`}
                                                 </div>
-                                                <div class='popupinfodiv'>
+                                                <div className='popupinfodiv'>
                                                     {parseInt(i.id.tokenId, 16)}
                                                 </div>
-                                                <div class='popupinfodiv'>
+                                                <div className='popupinfodiv'>
                                                     {dayjs(i.timeLastUpdated).format('DD-MM-YY')}
                                                 </div>
-                                                <div class='popupinfodiv'>
+                                                <div className='popupinfodiv'>
                                                     {i.metadata.name}
                                                 </div>
-                                                <div class='popupinfodiv d-flex align-items-center justify-content-center'>
-                                                    <input class='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
+                                                <div className='popupinfodiv d-flex align-items-center justify-content-center'>
+                                                    <input className='ongoingcheckbox' type={'checkbox'} name="myRadios" value="1" onClick={() => { setSelectedTokenID(parseInt(i.id.tokenId, 16)) }} />
                                                 </div>
 
                                             </div>
@@ -276,9 +220,9 @@ const Vestingpool = () => {
 
 
                         </div>
-                        <div class='buttonspopupDiv d-flex justify-content-between'>
-                            <button class='popupcancel' onClick={popupcancel}>Cancel</button>
-                            <button class='popupcontinue' style={{ display: cont ? 'block' : 'none' }} onClick={() => verify()}>Continue</button>
+                        <div className='buttonspopupDiv d-flex justify-content-between'>
+                            <button className='popupcancel' onClick={popupcancelCall}>Cancel</button>
+                            <button className='popupcontinue' style={{ display: cont ? 'block' : 'none' }} onClick={() => verify(selectedTokenID)}>Continue</button>
                         </div>
                     </div>
 
@@ -286,7 +230,7 @@ const Vestingpool = () => {
             }
 
         </div>
-
+        </>
     )
 }
 

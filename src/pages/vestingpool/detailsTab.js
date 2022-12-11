@@ -31,28 +31,28 @@ function DetailsTab() {
 
     return (
         <>
-            <div class='classdetailstabMaindiv'>
-                <div class='detailstabsubdivOne d-flex justify-content-between'>
-                    <div class='vestingpooltextspanDiv'>
+            <div className='classdetailstabMaindiv'>
+                <div className='detailstabsubdivOne d-flex justify-content-between'>
+                    <div className='vestingpooltextspanDiv'>
                         <span>Opened</span>
                     </div>
-                    <div class='vestingpooltextspanDiv'>
+                    <div className='vestingpooltextspanDiv'>
                         <span>14-09-2022</span>
                     </div>
                 </div>
-                <div class='detailstabsubdivTwo d-flex justify-content-between align-items-center'>
-                    <div class='vestingpooltextspanDiv'>
+                <div className='detailstabsubdivTwo d-flex justify-content-between align-items-center'>
+                    <div className='vestingpooltextspanDiv'>
                         <span>Nota Value</span>
                     </div>
-                    <div class='vestingpooltextspanDiv'>
+                    <div className='vestingpooltextspanDiv'>
                         <span>1000</span>
                     </div>
                 </div>
-                <div class='detailstabsubdivOne d-flex justify-content-between'>
-                    <div class='vestingpooltextspanDiv'>
+                <div className='detailstabsubdivOne d-flex justify-content-between'>
+                    <div className='vestingpooltextspanDiv'>
                         <span>Total Funds</span>
                     </div>
-                    <div class='vestingpooltextspanDiv'>
+                    <div className='vestingpooltextspanDiv'>
                         <span>{totalReward}</span>
                     </div>
                 </div>

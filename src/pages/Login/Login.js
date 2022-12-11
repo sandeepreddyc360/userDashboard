@@ -38,27 +38,27 @@ function Login(props) {
 
 
   return (
-    <div class='loginMainDIv d-flex justify-content-center align-items-center'>
-      <img class='Loginbgimg' src={bgimg} alt='not visible' />
-      <div class='loginopacityDiv d-flex justify-content-center align-items-center'>
+    <div className='loginMainDIv d-flex justify-content-center align-items-center'>
+      <img className='Loginbgimg' src={bgimg} alt='not visible' />
+      <div className='loginopacityDiv d-flex justify-content-center align-items-center'>
       </div>
-      <div class='rectimagesDiv d-flex justify-content-center align-items-center'>
-        <img class='logologin' src={logologin} alt='not visible' />
-        <div class='rectimagesSubDiv d-flex justify-content-center align-items-center'>
-          <div class='loginMiddleboxDiv d-flex flex-column align-items-center'>
-            <span class='loginpageLogintext'>Log In</span>
+      <div className='rectimagesDiv d-flex justify-content-center align-items-center'>
+        <img className='logologin' src={logologin} alt='not visible' />
+        <div className='rectimagesSubDiv d-flex justify-content-center align-items-center'>
+          <div className='loginMiddleboxDiv d-flex flex-column align-items-center'>
+            <span className='loginpageLogintext'>Log In</span>
 
-            <div class='metamaskbuttonDivlogin d-flex justify-content-around align-items-center'>
+            <div className='metamaskbuttonDivlogin d-flex justify-content-around align-items-center'>
 
-              {/* <Link to='/welcomeuser' class='d-flex justify-content-center align-items-center loginmetamaskLinkroute'> */}
-              <div class='metamaskbuttonsubDiv d-flex justify-content-between align-items-center' onClick={login} variant="primary">
-                <span class='loginmetamasktext'>Metamask</span>
-                <img class='loginmetamasklogoDiv' src={metamasklogo} alt='not visible' />
+              {/* <Link to='/welcomeuser' className='d-flex justify-content-center align-items-center loginmetamaskLinkroute'> */}
+              <div className='metamaskbuttonsubDiv d-flex justify-content-between align-items-center' onClick={login} variant="primary">
+                <span className='loginmetamasktext'>Metamask</span>
+                <img className='loginmetamasklogoDiv' src={metamasklogo} alt='not visible' />
               </div>
               {/* </Link> */}
             </div>
 
-            <img class='questionmarkicon' src={questionmark} alt='not visible' />
+            <img className='questionmarkicon' src={questionmark} alt='not visible' />
           </div>
         </div>
       </div>

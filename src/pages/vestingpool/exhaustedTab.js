@@ -3,39 +3,39 @@ import React from 'react'
 function exhaustedTab({ vestedNftsData }) {
  
     return (
-        <div class='activetabMaindiv'>
-            <div class='activetextinfotabOne d-flex justify-content-between'>
-                <div class='activetabtextspanDivOne'>
-                    <span class='serialnumberheadings'>Serial No.</span>
+        <div className='activetabMaindiv'>
+            <div className='activetextinfotabOne d-flex justify-content-between'>
+                <div className='activetabtextspanDivOne'>
+                    <span className='serialnumberheadings'>Serial No.</span>
                 </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span class='serialnumberheadings'>NFT ID</span>
+                <div className='activetabtextspanDivTwo'>
+                    <span className='serialnumberheadings'>NFT ID</span>
                 </div>
-                <div class='activetabtextspanDivOne'>
-                    <span class='serialnumberheadings'>Date</span>
+                <div className='activetabtextspanDivOne'>
+                    <span className='serialnumberheadings'>Date</span>
                 </div>
-                <div class='activetabtextspanDivTwo'>
-                    <span class='serialnumberheadings'>Name</span>
+                <div className='activetabtextspanDivTwo'>
+                    <span className='serialnumberheadings'>Name</span>
                 </div>
 
             </div>
-            <div class='scrollDivallocation'>
+            <div className='scrollDivallocation'>
 
             {
                 vestedNftsData.map((i, index) => (
                     i.vestingCompleted !== false &&
                     <>
-                        <div class='activetextinfotabTwo d-flex justify-content-between'>
-                            <div class='activetabtextspanDivOne'>
+                        <div className='activetextinfotabTwo d-flex justify-content-between'>
+                            <div className='activetabtextspanDivOne'>
                                 <span>5486</span>
                             </div>
-                            <div class='activetabtextspanDivTwo'>
+                            <div className='activetabtextspanDivTwo'>
                                 <span>Lorem Ipsum </span>
                             </div>
-                            <div class='activetabtextspanDivOne'>
+                            <div className='activetabtextspanDivOne'>
                                 <span>Lorem Ipsum </span>
                             </div>
-                            <div class='activetabtextspanDivTwo'>
+                            <div className='activetabtextspanDivTwo'>
                                 <span>Lorem Ipsum </span>
                             </div>
 

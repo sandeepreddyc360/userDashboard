@@ -70,15 +70,15 @@ const ImageCropDialog = ({ id, imageUrl, cropInit, zoomInit,onCancel, aspectInit
     return (
         <>
 
-<div class='popupprofilecropMaindiv' onClick={onCancel}>
+<div className='popupprofilecropMaindiv' onClick={onCancel}>
 </div>
-            <div class='popupcrop d-flex flex-column align-items-center justify-content-end'>
-                <Cropper class='profileDialog' height='50' aspect={aspect.value} image={uploadedImage ? uploadedImage : imageUrl} zoom={zoom} crop={crop} onCropChange={onCropChange} onZoomChange={onZoomChange} onCropComplete={onCropComplete} />
-                <div class=' cropbuttonsMainDiv d-flex justify-content-around align-items-center'>
+            <div className='popupcrop d-flex flex-column align-items-center justify-content-end'>
+                <Cropper className='profileDialog' height='50' aspect={aspect.value} image={uploadedImage ? uploadedImage : imageUrl} zoom={zoom} crop={crop} onCropChange={onCropChange} onZoomChange={onZoomChange} onCropComplete={onCropComplete} />
+                <div className=' cropbuttonsMainDiv d-flex justify-content-around align-items-center'>
                     <input type={'range'} min={1} max={3} step={0.1} value={zoom} onInput={(e) => { onZoomChange(e.target.value) }} className='slider' style={{ 'display': 'none' }} />
                     <select style={{ 'display': 'none' }} onChange={onAspectChange}>{aspectRatios.map((ratio) => <option key={ratio.text} value={ratio.value} selected={ratio.value === aspect.value}>{ratio.text}</option>)}</select>
-                        <input class='choosefilebutton' type="file" id="profilepicture" name="profilepicture" accept="image/png, image/jpeg" onChange={changeHandler} />
-                        <button class='uploadbutton' onClick={onCrop}>Upload</button>                    
+                        <input className='choosefilebutton' type="file" id="profilepicture" name="profilepicture" accept="image/png, image/jpeg" onChange={changeHandler} />
+                        <button className='uploadbutton' onClick={onCrop}>Upload</button>                    
                 </div>
 
             </div>

@@ -50,16 +50,16 @@ function Userdetail() {
 
 
   return (
-    <div class='userdeatilMaianDIv d-flex flex-column align-items-center'>
-      <div class='detailsCirclenavDiv'>
+    <div className='userdeatilMaianDIv d-flex flex-column align-items-center'>
+      <div className='detailsCirclenavDiv'>
         <Circles />
       </div>
 
       <Navbar />
-      <div class='detailsSearchbarMainDiv d-flex align-items-center justify-content-between'>
-        <img class='arrowbtn' onClick={() => navigate("/welcomeuser")} src={arrowbtn} alt='not visible' />
-        <div class='deatilsearchsubDiv d-flex justify-content-evenly'>
-          <div class=' d-flex align-items-center'>
+      <div className='detailsSearchbarMainDiv d-flex align-items-center justify-content-between'>
+        <img className='arrowbtn' onClick={() => navigate("/welcomeuser")} src={arrowbtn} alt='not visible' />
+        <div className='deatilsearchsubDiv d-flex justify-content-evenly'>
+          <div className=' d-flex align-items-center'>
             <h1>NFT Details</h1>
           </div>
 
@@ -68,45 +68,45 @@ function Userdetail() {
         <div>
         </div>
       </div>
-      <div class='detailsimageinfoMainDiv d-flex justify-content-between align-items-center'>
-        <div class='detailskullimg'>
-          <img class='detailskullimgtag' src={singleNft?.metadata?.image} alt='not-visible' />
+      <div className='detailsimageinfoMainDiv d-flex justify-content-between align-items-center'>
+        <div className='detailskullimg'>
+          <img className='detailskullimgtag' src={singleNft?.metadata?.image} alt='not-visible' />
         </div>
 
-        <div class='detailpageinfoDiv d-flex flex-column'>
-          <span class='detailinfoidnum'>#{id}</span>
-          <span class='theNeedlingstext'>{singleNft?.metadata?.name}</span>
-          <div class='ownerBloodstained'>
-            <span class='ownertetx'> Owner -</span>
-            <span class='bloostainedtext'> --</span>
+        <div className='detailpageinfoDiv d-flex flex-column'>
+          <span className='detailinfoidnum'>#{id}</span>
+          <span className='theNeedlingstext'>{singleNft?.metadata?.name}</span>
+          <div className='ownerBloodstained'>
+            <span className='ownertetx'> Owner -</span>
+            <span className='bloostainedtext'> --</span>
           </div>
 
         </div>
       </div>
-      <div class='descripionDivdetails'>
-        <div class='descripionSubDivdetails d-flex justify-content-between align-items-center'>
-          <div class='lineborderOneDiv'>
+      <div className='descripionDivdetails'>
+        <div className='descripionSubDivdetails d-flex justify-content-between align-items-center'>
+          <div className='lineborderOneDiv'>
 
           </div>
-          <div class='detailsdescriptiontextBoxDiv d-flex flex-column align-items-center'>
+          <div className='detailsdescriptiontextBoxDiv d-flex flex-column align-items-center'>
             <span onClick={descriptionhandler}>Description</span>
-            <div style={{ display: description ? 'block' : null }} id="description" class=' horizontalLine '></div>
+            <div style={{ display: description ? 'block' : null }} id="description" className=' horizontalLine '></div>
           </div>
 
 
-          <div class='lineborderThreeDiv'>
+          <div className='lineborderThreeDiv'>
 
           </div>
-          <div class='detailsdescriptiontextBoxDiv d-flex flex-column align-items-center'>
+          <div className='detailsdescriptiontextBoxDiv d-flex flex-column align-items-center'>
             <span onClick={iteactivehandler}>Item Activity</span>
-            <div style={{ display: itemactive ? 'block' : null }} class=' horizontalLine '></div>
+            <div style={{ display: itemactive ? 'block' : null }} className=' horizontalLine '></div>
           </div>
-          <div class='lineborderFourDiv'>
+          <div className='lineborderFourDiv'>
 
           </div>
         </div>
-        <div class='discriptionTextDisplaydiv d-flex justify-content-center align-items-center'>
-          <div class='discriptionTextDisplaysubdiv '>
+        <div className='discriptionTextDisplaydiv d-flex justify-content-center align-items-center'>
+          <div className='discriptionTextDisplaysubdiv '>
 
             {description ? <p>{singleNft?.metadata?.description}</p> : null}
             {itemactive ? < p > --</p> : null}

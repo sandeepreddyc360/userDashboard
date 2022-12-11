@@ -3,11 +3,11 @@ import '../components/CircleNav.css'
 
 function CirclesNav() {
   return (
-    <div class='circleballsMainDiv'>
-        <div class='circleOne'>
+    <div className='circleballsMainDiv'>
+        <div className='circleOne'>
 
         </div>
-        <div class='circleTwo'>
+        <div className='circleTwo'>
 
         </div>
     </div>
