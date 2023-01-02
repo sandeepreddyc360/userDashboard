@@ -8,11 +8,20 @@ import { ABI, vestingContractAddress } from "../config/vestingConfig";
 // what MetaMask injects as window.ethereum into each page
 const provider = new ethers.providers.Web3Provider(window.ethereum);
 // MetaMask requires requesting permission to connect users accounts
-provider.send("eth_requestAccounts", []);
+let accounts = await provider.send("eth_requestAccounts", []);
+let account = accounts[0];
 // The MetaMask plugin also allows signing transactions to
 // send ether and pay to change state within the blockchain.
 // For this, you need the account signer...
+window.ethereum.on('accountsChanged', function (accounts) {
+    account = accounts[0];
+});
 const signer = provider.getSigner();
-// await signer.getAddress()
+const address =  await signer.getAddress();
+console.log("address", address);
 const vestingContract = new ethers.Contract(vestingContractAddress, ABI, signer);
+vestingContract.signer.getAddress().then((res) => {
+    sessionStorage.setItem("WalletAddress",res)
+    console.log("res wall", res)
+});
 export default vestingContract;

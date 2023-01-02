@@ -92,7 +92,7 @@ function AllocationTab({ vestedNftsData }) {
                     </div>
                     <div className='scrollDivallocation'>
                         {
-                            Allocation?.map((i, index) => (
+                        Allocation.length !== 0 ? Allocation?.map((i, index) => (
                                 <div className='activetextinfotabTwo d-flex justify-content-between'>
                                     <div className='activetabtextspanDivOne'>
                                         <span>{index + 1}</span>
@@ -110,7 +110,9 @@ function AllocationTab({ vestedNftsData }) {
                                         <button className='claimbutton' onClick={() => Claim(parseInt(i.month._hex))}>Claim</button>
                                     </div>
                                 </div>
-                            ))
+                            )): (
+                                <div> You have no vested NFTS </div>
+                            )
                         }
                     </div>
                 </div>
